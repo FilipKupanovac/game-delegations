@@ -28,6 +28,9 @@ public class GameEntity {
     @JoinColumn(name = "competition")
     private CompetitionEntity competition;
 
+    @Column(name = "game_number")
+    private Integer gameNumber;
+
     @Column(name = "start_time")
     private Instant startTime;
 
@@ -60,7 +63,7 @@ public class GameEntity {
     private TableOfficialEntity statistician;
 
     @ManyToOne
-    @JoinColumn(name = "statistician_assistent")
-    private TableOfficialEntity statisticianAssistent;
+    @JoinColumn(name = "statistician_assistant")
+    private TableOfficialEntity statisticianAssistant;
 
 }

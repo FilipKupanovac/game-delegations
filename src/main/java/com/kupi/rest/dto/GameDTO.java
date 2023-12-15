@@ -13,6 +13,8 @@ public class GameDTO {
 
     private Instant startTime;
 
+    private Integer gameNumber;
+
     private VenueDTO venue;
 
     private SportsClubDTO host;
@@ -27,5 +29,5 @@ public class GameDTO {
 
     private TableOfficialDTO statistician;
 
-    private TableOfficialDTO statisticianAssistent;
+    private TableOfficialDTO statisticianAssistant;
 }
