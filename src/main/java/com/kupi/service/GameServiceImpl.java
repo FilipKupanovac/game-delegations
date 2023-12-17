@@ -5,10 +5,13 @@
  */
 package com.kupi.service;
 
+import com.kupi.persistence.entity.GameEntity;
 import com.kupi.persistence.repository.GameRepository;
 import com.kupi.rest.dto.GameDTO;
 import com.kupi.service.mapper.GameMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.IdGenerator;
 
 import java.util.List;
 
@@ -17,38 +20,46 @@ public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
     private final GameMapper gameMapper;
+    private final IdGenerator idGenerator;
 
-    public GameServiceImpl(GameRepository gameRepository, GameMapper gameMapper) {
+    public GameServiceImpl(GameRepository gameRepository, GameMapper gameMapper, IdGenerator idGenerator) {
         this.gameRepository = gameRepository;
         this.gameMapper = gameMapper;
+        this.idGenerator = idGenerator;
     }
 
     @Override
     public GameDTO saveGame(GameDTO gameDTO) {
-        // Stub implementation
-        return null;
+        GameEntity gameEntity = gameMapper.toEntity(gameDTO);
+        gameEntity.setUuid(idGenerator.generateId().toString());
+        return gameMapper.toDTO(gameRepository.save(gameEntity));
     }
 
     @Override
     public GameDTO getGameById(Long id) {
-        // Stub implementation
-        return null;
+        return gameMapper.toDTO(getById(id));
     }
 
     @Override
     public List<GameDTO> getAllGames() {
-        // Stub implementation
-        return null;
+        // TODO - change to paging return with filters
+        return gameRepository.findAll().stream().map(gameMapper::toDTO).toList();
     }
 
     @Override
     public GameDTO updateGame(Long id, GameDTO gameDTO) {
-        // Stub implementation
-        return null;
+        GameEntity gameEntity = getById(id);
+        gameMapper.update(gameEntity, gameDTO);
+        return gameMapper.toDTO(gameRepository.save(gameEntity));
     }
 
     @Override
     public void deleteGame(Long id) {
-        // Stub implementation
+        gameRepository.delete(getById(id));
+    }
+
+    private GameEntity getById(Long id) {
+        return gameRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Game with id " + id + " not found"));
     }
 }

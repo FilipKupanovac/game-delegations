@@ -12,11 +12,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "table_official")
 public class TableOfficialEntity {
 
@@ -24,6 +29,10 @@ public class TableOfficialEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
+
+    @UUID(version = 4)
+    @Column(name = "uuid")
+    private String uuid;
 
     @Column(name = "first_name")
     private String firstName;

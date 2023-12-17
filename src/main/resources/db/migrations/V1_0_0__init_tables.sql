@@ -1,6 +1,7 @@
 CREATE TABLE competition
 (
     id     BIGINT PRIMARY KEY,
+    uuid   VARCHAR(36) NOT NULL,
     name   VARCHAR(255),
     season VARCHAR(255)
 );
@@ -8,6 +9,7 @@ CREATE TABLE competition
 CREATE TABLE table_official
 (
     id         BIGINT PRIMARY KEY,
+    uuid       VARCHAR(36) NOT NULL,
     first_name VARCHAR(255),
     last_name  VARCHAR(255)
 );
@@ -15,6 +17,7 @@ CREATE TABLE table_official
 CREATE TABLE sports_club
 (
     id   BIGINT PRIMARY KEY,
+    uuid VARCHAR(36) NOT NULL,
     name VARCHAR(255),
     city VARCHAR(255)
 );
@@ -22,6 +25,7 @@ CREATE TABLE sports_club
 CREATE TABLE venue
 (
     id      BIGINT PRIMARY KEY,
+    uuid    VARCHAR(36) NOT NULL,
     name    VARCHAR(255),
     address VARCHAR(255),
     latitude DOUBLE,
@@ -31,6 +35,7 @@ CREATE TABLE venue
 CREATE TABLE game
 (
     id                        BIGINT PRIMARY KEY,
+    uuid                      VARCHAR(36) NOT NULL,
     competition_id            BIGINT,
     start_time                TIMESTAMP,
     game_number               BIGINT,

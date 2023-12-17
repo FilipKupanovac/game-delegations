@@ -9,13 +9,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.UUID;
 
 import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "game")
 public class GameEntity {
 
@@ -23,6 +28,10 @@ public class GameEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
+
+    @UUID(version = 4)
+    @Column(name = "uuid")
+    private String uuid;
 
     @ManyToOne
     @JoinColumn(name = "competition")

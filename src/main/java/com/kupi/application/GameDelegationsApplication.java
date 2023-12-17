@@ -8,5 +8,7 @@ public class GameDelegationsApplication {
     public static void main(String[] args) {
         SpringApplication.run(GameDelegationsApplication.class, args);
     }
-    // TODO - add docker compose and define database
+    // TODO
+    //  - add docker compose and define database
+    //  - enable search by uuid, split DTO and request models for request and return type
 }
