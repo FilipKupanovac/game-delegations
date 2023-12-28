@@ -49,11 +49,11 @@ public class GameEntity {
 
     @ManyToOne
     @JoinColumn(name = "host")
-    private SportsClubEntity host;
+    private SportClubEntity host;
 
     @ManyToOne
     @JoinColumn(name = "guest")
-    private SportsClubEntity guest;
+    private SportClubEntity guest;
 
     @ManyToOne
     @JoinColumn(name = "scorer")

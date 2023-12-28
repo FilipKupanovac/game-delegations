@@ -17,8 +17,8 @@ import org.hibernate.validator.constraints.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "sports_club")
-public class SportsClubEntity {
+@Table(name = "sport_club")
+public class SportClubEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

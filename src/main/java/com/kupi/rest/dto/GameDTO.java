@@ -12,9 +12,9 @@ public class GameDTO {
 
     private VenueDTO venue;
 
-    private SportsClubDTO host;
+    private SportClubDTO host;
 
-    private SportsClubDTO guest;
+    private SportClubDTO guest;
 
     private TableOfficialDTO scorer;
 

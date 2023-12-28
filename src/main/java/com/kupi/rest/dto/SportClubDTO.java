@@ -1,6 +1,6 @@
 package com.kupi.rest.dto;
 
-public class SportsClubDTO {
+public class SportClubDTO {
 
     private String name;
 

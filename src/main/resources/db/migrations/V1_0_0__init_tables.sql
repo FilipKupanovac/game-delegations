@@ -14,7 +14,7 @@ CREATE TABLE table_official
     last_name  VARCHAR(255)
 );
 
-CREATE TABLE sports_club
+CREATE TABLE sport_club
 (
     id   BIGINT PRIMARY KEY,
     uuid VARCHAR(36) NOT NULL,
@@ -49,8 +49,8 @@ CREATE TABLE game
     statistician_assistant_id BIGINT,
     FOREIGN KEY (competition_id) REFERENCES competition (id),
     FOREIGN KEY (venue_id) REFERENCES venue (id),
-    FOREIGN KEY (host_id) REFERENCES sports_club (id),
-    FOREIGN KEY (guest_id) REFERENCES sports_club (id),
+    FOREIGN KEY (host_id) REFERENCES sport_club (id),
+    FOREIGN KEY (guest_id) REFERENCES sport_club (id),
     FOREIGN KEY (scorer_id) REFERENCES table_official (id),
     FOREIGN KEY (timer_id) REFERENCES table_official (id),
     FOREIGN KEY (shot_clock_id) REFERENCES table_official (id),
