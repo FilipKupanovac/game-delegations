@@ -1,8 +1,3 @@
-/*
- * Urheberrechtshinweis: Diese Software ist urheberrechtlich geschützt. Das Urheberrecht liegt bei
- * Research Industrial Systems Engineering (RISE) Forschungs-, Entwicklungs- und Großprojektberatung GmbH,
- * soweit nicht im Folgenden näher gekennzeichnet.
- */
 package com.kupi.persistence.entity;
 
 import jakarta.persistence.Column;
@@ -26,7 +21,7 @@ import org.hibernate.validator.constraints.UUID;
 public class SportsClubEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

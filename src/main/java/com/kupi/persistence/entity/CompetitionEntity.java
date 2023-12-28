@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.UUID;
 public class CompetitionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
