@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Game Delegations Application
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    driver-class-name: org.postgresql.Driver
+    username: uksgo
+    password: uksgopass
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: false
+        jdbc:
+          use_streams_for_binary: true
+        default_schema: ${game-delegations.schema}
+
+game-delegations:
+  schema: game-delegations
