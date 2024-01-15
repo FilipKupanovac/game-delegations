@@ -1,6 +1,8 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.CompetitionDTO;
+import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -10,8 +12,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-
-import java.util.List;
 
 @Path("/v1/competition")
 public interface CompetitionApi {
@@ -28,7 +28,7 @@ public interface CompetitionApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<CompetitionDTO> getAllCompetitionsDTO();
+    PagedResponse<CompetitionDTO> getAllCompetitionsDTO(CompetitionQueryParamsDTO params);
 
     @PUT
     @Path("/{id}")

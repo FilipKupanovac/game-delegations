@@ -9,7 +9,6 @@ public class GameDelegationsApplication {
         SpringApplication.run(GameDelegationsApplication.class, args);
     }
     // TODO
-    //  - add docker compose and define database
     //  - enable search by uuid, split DTO and request models for request and return type
     //  - write service javadoc for get multiple items method
     //  - make database critical operations like delete secured with additional confirmation layer

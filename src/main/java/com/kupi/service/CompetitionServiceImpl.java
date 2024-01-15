@@ -2,13 +2,17 @@ package com.kupi.service;
 
 import com.kupi.persistence.entity.CompetitionEntity;
 import com.kupi.persistence.repository.CompetitionRepository;
+import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.CompetitionDTO;
+import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import com.kupi.service.mapper.CompetitionMapper;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
-
-import java.util.List;
 
 @Service
 public class CompetitionServiceImpl implements CompetitionService {
@@ -36,9 +40,24 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public List<CompetitionDTO> getAllCompetitions() {
-        // TODO - change to paging return with filters
-        return competitionRepository.findAll().stream().map(competitionMapper::toDTO).toList();
+    public PagedResponse<CompetitionDTO> getAllCompetitions(CompetitionQueryParamsDTO params) {
+        PageRequest pageRequest = PageRequest.of(
+                params.getPage(),
+                params.getSize(),
+                Sort.Direction.fromOptionalString(params.getDirection()).orElse(Sort.Direction.ASC),
+                StringUtils.isNotBlank(params.getColumn()) ? params.getColumn() : "key"
+        );
+        if (competitionRepository.count() < 1) {
+            return PagedResponse.fromPage(Page.empty());
+        }
+        Page<CompetitionEntity> pageSlice = competitionRepository.findAll(pageRequest);
+        Page<CompetitionDTO> pageSliceDTO = pageSlice.map(competitionMapper::toDTO);
+        PagedResponse<CompetitionDTO> pagedResponse = PagedResponse.fromPage(pageSliceDTO);
+
+        if (params.getPage() > pagedResponse.getTotalPages()) {
+            throw new RuntimeException("Page out of bounds!");
+        }
+        return pagedResponse;
     }
 
     @Override

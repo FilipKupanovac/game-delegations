@@ -1,12 +1,12 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.CompetitionDTO;
+import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import com.kupi.service.CompetitionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CompetitionApiImpl implements CompetitionApi {
@@ -32,9 +32,9 @@ public class CompetitionApiImpl implements CompetitionApi {
     }
 
     @Override
-    public List<CompetitionDTO> getAllCompetitionsDTO() {
+    public PagedResponse<CompetitionDTO> getAllCompetitionsDTO(CompetitionQueryParamsDTO params) {
         log.info("CompetitionApi.getAllCompetitionsDTO");
-        return competitionService.getAllCompetitions();
+        return competitionService.getAllCompetitions(params);
     }
 
     @Override
