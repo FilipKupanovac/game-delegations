@@ -10,8 +10,7 @@ public class GameDelegationsApplication {
     }
     // TODO
     //  - enable search by uuid, split DTO and request models for request and return type
-    //  - write service javadoc for get multiple items method
-    //  - make database critical operations like delete secured with additional confirmation layer
+    //  - make database critical operations like delete secured with additional confirmation layer - this is for FE idea
     //  - provide functionality for table officials to set unavailability periods
     //  - provide functionality to display table official's games
     //  - provide functionality for table official to accept or reject game. Optional - add reason text field,

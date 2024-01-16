@@ -1,12 +1,13 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.SportClubRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.SportClubDTO;
 import com.kupi.service.SportClubService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class SportClubApiImpl implements SportClubApi {
@@ -20,9 +21,9 @@ public class SportClubApiImpl implements SportClubApi {
     }
 
     @Override
-    public SportClubDTO createSportsClubDTO(SportClubDTO sportClubDTO) {
-        log.info("SportsClubApi.createSportClubDTO [{}]", sportClubDTO);
-        return sportClubService.saveSportClub(sportClubDTO);
+    public SportClubDTO createSportsClubDTO(SportClubRequest sportClubRequest) {
+        log.info("SportsClubApi.createSportClubDTO [{}]", sportClubRequest);
+        return sportClubService.saveSportClub(sportClubRequest);
     }
 
     @Override
@@ -32,15 +33,15 @@ public class SportClubApiImpl implements SportClubApi {
     }
 
     @Override
-    public List<SportClubDTO> getAllSportsClubsDTO() {
-        log.info("SportsClubApi.getAllSportClubsDTO");
-        return sportClubService.getAllSportClubs();
+    public PagedResponse<SportClubDTO> getAllSportsClubsDTO(BasicPageQueryParams params) {
+        log.info("SportsClubApi.getAllSportClubsDTO [{}]", params);
+        return sportClubService.getAllSportClubs(params);
     }
 
     @Override
-    public SportClubDTO updateSportsClubDTO(Long id, SportClubDTO sportClubDTO) {
-        log.info("SportsClubApi.updateSportClubDTO [{}, {}]", id, sportClubDTO);
-        return sportClubService.updateSportClub(id, sportClubDTO);
+    public SportClubDTO updateSportsClubDTO(Long id, SportClubRequest sportClubRequest) {
+        log.info("SportsClubApi.updateSportClubDTO [{}, {}]", id, sportClubRequest);
+        return sportClubService.updateSportClub(id, sportClubRequest);
     }
 
     @Override

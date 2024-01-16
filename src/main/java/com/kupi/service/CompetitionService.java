@@ -1,8 +1,9 @@
 package com.kupi.service;
 
+import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.CompetitionDTO;
-import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 
 /**
  * Service interface for managing competitions in the system.
@@ -12,10 +13,10 @@ public interface CompetitionService {
     /**
      * Saves competition to the system.
      *
-     * @param competitionDTO representation of competition
+     * @param competitionRequest request to create competition
      * @return created competition representation
      */
-    CompetitionDTO saveCompetition(CompetitionDTO competitionDTO);
+    CompetitionDTO saveCompetition(CompetitionRequest competitionRequest);
 
     /**
      * Return competition with provided identifier.
@@ -31,16 +32,16 @@ public interface CompetitionService {
      * @param params query params
      * @return page response
      */
-    PagedResponse<CompetitionDTO> getAllCompetitions(CompetitionQueryParamsDTO params);
+    PagedResponse<CompetitionDTO> getAllCompetitions(BasicPageQueryParams params);
 
     /**
      * Update competition with provided identifier.
      *
-     * @param id             competition identifier
-     * @param competitionDTO fields to update
+     * @param id                 competition identifier
+     * @param competitionRequest request to update competition
      * @return updated competition representation
      */
-    CompetitionDTO updateCompetition(Long id, CompetitionDTO competitionDTO);
+    CompetitionDTO updateCompetition(Long id, CompetitionRequest competitionRequest);
 
     /**
      * Delete competition with provided identifier.

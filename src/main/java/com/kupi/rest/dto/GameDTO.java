@@ -1,14 +1,8 @@
 package com.kupi.rest.dto;
 
-import java.time.Instant;
+import com.kupi.rest.api.base.BaseGame;
 
-public class GameDTO {
-
-    private CompetitionDTO competition;
-
-    private Instant startTime;
-
-    private Integer gameNumber;
+public class GameDTO extends BaseGame {
 
     private VenueDTO venue;
 

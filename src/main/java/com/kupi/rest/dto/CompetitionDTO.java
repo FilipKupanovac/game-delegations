@@ -1,8 +1,6 @@
 package com.kupi.rest.dto;
 
-public class CompetitionDTO {
-    
-    private String name;
+import com.kupi.rest.api.base.BaseCompetition;
 
-    private String season;
+public class CompetitionDTO extends BaseCompetition {
 }

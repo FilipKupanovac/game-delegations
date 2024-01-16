@@ -1,7 +1,6 @@
 package com.kupi.rest.dto;
 
-public class TableOfficialDTO {
-    private String firstName;
+import com.kupi.rest.api.base.BaseTableOfficial;
 
-    private String lastName;
+public class TableOfficialDTO extends BaseTableOfficial {
 }

@@ -1,11 +1,6 @@
 package com.kupi.rest.dto;
 
-public class VenueDTO {
-    private String name;
+import com.kupi.rest.api.base.BaseVenue;
 
-    private String address;
-
-    private Double latitude;
-
-    private Double longitude;
+public class VenueDTO extends BaseVenue {
 }

@@ -1,5 +1,8 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.GameRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.GameDTO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -11,15 +14,13 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.List;
-
 @Path("/v1/game")
 public interface GameApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    GameDTO createGameDTO(GameDTO gameDTO);
+    GameDTO createGameDTO(GameRequest gameRequest);
 
     @GET
     @Path("/{id}")
@@ -28,13 +29,13 @@ public interface GameApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<GameDTO> getAllGamesDTO();
+    PagedResponse<GameDTO> getAllGamesDTO(BasicPageQueryParams params);
 
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    GameDTO updateGameDTO(@PathParam("id") Long id, GameDTO gameDTO);
+    GameDTO updateGameDTO(@PathParam("id") Long id, GameRequest gameRequest);
 
     @DELETE
     @Path("/{id}")

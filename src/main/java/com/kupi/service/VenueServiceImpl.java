@@ -2,13 +2,18 @@ package com.kupi.service;
 
 import com.kupi.persistence.entity.VenueEntity;
 import com.kupi.persistence.repository.VenueRepository;
+import com.kupi.rest.api.request.VenueRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.VenueDTO;
 import com.kupi.service.mapper.VenueMapper;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
-
-import java.util.List;
 
 @Service
 public class VenueServiceImpl implements VenueService {
@@ -24,8 +29,8 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public VenueDTO saveVenue(VenueDTO venueDTO) {
-        VenueEntity venueEntity = venueMapper.toEntity(venueDTO);
+    public VenueDTO saveVenue(VenueRequest venueRequest) {
+        VenueEntity venueEntity = venueMapper.toEntity(venueRequest);
         venueEntity.setUuid(idGenerator.generateId().toString());
         return venueMapper.toDTO(venueRepository.save(venueEntity));
     }
@@ -36,15 +41,30 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public List<VenueDTO> getAllVenues() {
-        // TODO - change to paging return with filters
-        return venueRepository.findAll().stream().map(venueMapper::toDTO).toList();
+    public PagedResponse<VenueDTO> getAllVenues(BasicPageQueryParams params) {
+        PageRequest pageRequest = PageRequest.of(
+                params.getPage(),
+                params.getSize(),
+                Sort.Direction.fromOptionalString(params.getDirection()).orElse(Sort.Direction.ASC),
+                StringUtils.isNotBlank(params.getColumn()) ? params.getColumn() : "key"
+        );
+        if (venueRepository.count() < 1) {
+            return PagedResponse.fromPage(Page.empty());
+        }
+        Page<VenueEntity> pageSlice = venueRepository.findAll(pageRequest);
+        Page<VenueDTO> pageSliceDTO = pageSlice.map(venueMapper::toDTO);
+        PagedResponse<VenueDTO> pagedResponse = PagedResponse.fromPage(pageSliceDTO);
+
+        if (params.getPage() > pagedResponse.getTotalPages()) {
+            throw new RuntimeException("Page out of bounds!");
+        }
+        return pagedResponse;
     }
 
     @Override
-    public VenueDTO updateVenue(Long id, VenueDTO venueDTO) {
+    public VenueDTO updateVenue(Long id, VenueRequest venueRequest) {
         VenueEntity venueEntity = getById(id);
-        venueMapper.update(venueEntity, venueDTO);
+        venueMapper.update(venueEntity, venueRequest);
         return venueMapper.toDTO(venueRepository.save(venueEntity));
     }
 

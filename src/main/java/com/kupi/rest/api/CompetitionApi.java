@@ -1,8 +1,9 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.CompetitionDTO;
-import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -19,7 +20,7 @@ public interface CompetitionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO createCompetitionDTO(CompetitionDTO competitionDTO);
+    CompetitionDTO createCompetitionDTO(CompetitionRequest competitionRequest);
 
     @GET
     @Path("/{id}")
@@ -28,13 +29,13 @@ public interface CompetitionApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<CompetitionDTO> getAllCompetitionsDTO(CompetitionQueryParamsDTO params);
+    PagedResponse<CompetitionDTO> getAllCompetitionsDTO(BasicPageQueryParams params);
 
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO updateCompetitionDTO(@PathParam("id") Long id, CompetitionDTO competitionDTO);
+    CompetitionDTO updateCompetitionDTO(@PathParam("id") Long id, CompetitionRequest competitionRequest);
 
     @DELETE
     @Path("/{id}")

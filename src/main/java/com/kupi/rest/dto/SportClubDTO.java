@@ -1,8 +1,6 @@
 package com.kupi.rest.dto;
 
-public class SportClubDTO {
+import com.kupi.rest.api.base.BaseSportClub;
 
-    private String name;
-
-    private String city;
+public class SportClubDTO extends BaseSportClub {
 }

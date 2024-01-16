@@ -1,12 +1,13 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.GameRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.GameDTO;
 import com.kupi.service.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class GameApiImpl implements GameApi {
@@ -20,9 +21,9 @@ public class GameApiImpl implements GameApi {
     }
 
     @Override
-    public GameDTO createGameDTO(GameDTO gameDTO) {
-        log.info("GameApi.createGameDTO [{}]", gameDTO);
-        return gameService.saveGame(gameDTO);
+    public GameDTO createGameDTO(GameRequest gameRequest) {
+        log.info("GameApi.createGameDTO [{}]", gameRequest);
+        return gameService.saveGame(gameRequest);
     }
 
     @Override
@@ -32,15 +33,15 @@ public class GameApiImpl implements GameApi {
     }
 
     @Override
-    public List<GameDTO> getAllGamesDTO() {
-        log.info("GameApi.getAllGamesDTO");
-        return gameService.getAllGames();
+    public PagedResponse<GameDTO> getAllGamesDTO(BasicPageQueryParams params) {
+        log.info("GameApi.getAllGamesDTO [{}]", params);
+        return gameService.getAllGames(params);
     }
 
     @Override
-    public GameDTO updateGameDTO(Long id, GameDTO gameDTO) {
-        log.info("GameApi.updateGameDTO [id: {}, gameDTO: {}]", id, gameDTO);
-        return gameService.updateGame(id, gameDTO);
+    public GameDTO updateGameDTO(Long id, GameRequest gameRequest) {
+        log.info("GameApi.updateGameDTO [id: {}, gameDTO: {}]", id, gameRequest);
+        return gameService.updateGame(id, gameRequest);
     }
 
     @Override

@@ -14,7 +14,7 @@ import org.springframework.lang.Nullable;
 @Getter
 @EqualsAndHashCode
 @ToString
-public abstract class AbstractPageQueryParams {
+public class BasicPageQueryParams {
 
     @NotNull
     @QueryParam("page")
@@ -43,10 +43,10 @@ public abstract class AbstractPageQueryParams {
     @DefaultValue("DESC")
     protected String direction;
 
-    protected AbstractPageQueryParams() {
+    protected BasicPageQueryParams() {
     }
 
-    protected AbstractPageQueryParams(Integer page, Integer size, @Nullable String column, @Nullable String direction) {
+    protected BasicPageQueryParams(Integer page, Integer size, @Nullable String column, @Nullable String direction) {
         super();
         this.page = page;
         this.size = size;

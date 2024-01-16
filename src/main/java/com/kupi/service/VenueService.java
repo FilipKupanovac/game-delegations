@@ -1,8 +1,9 @@
 package com.kupi.service;
 
+import com.kupi.rest.api.request.VenueRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.VenueDTO;
-
-import java.util.List;
 
 /**
  * Service interface for managing venues in the system.
@@ -12,10 +13,10 @@ public interface VenueService {
     /**
      * Saves a venue to the system.
      *
-     * @param venueDTO representation of the venue
+     * @param venueRequest request to create venue
      * @return created venue representation
      */
-    VenueDTO saveVenue(VenueDTO venueDTO);
+    VenueDTO saveVenue(VenueRequest venueRequest);
 
     /**
      * Retrieves a venue with the provided identifier.
@@ -30,16 +31,16 @@ public interface VenueService {
      *
      * @return list of venue representations
      */
-    List<VenueDTO> getAllVenues();
+    PagedResponse<VenueDTO> getAllVenues(BasicPageQueryParams params);
 
     /**
      * Updates a venue with the provided identifier.
      *
-     * @param id venue identifier
-     * @param venueDTO fields to update
+     * @param id           venue identifier
+     * @param venueRequest request to update venue
      * @return updated venue representation
      */
-    VenueDTO updateVenue(Long id, VenueDTO venueDTO);
+    VenueDTO updateVenue(Long id, VenueRequest venueRequest);
 
     /**
      * Deletes a venue with the provided identifier.

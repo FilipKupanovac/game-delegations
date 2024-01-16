@@ -2,9 +2,10 @@ package com.kupi.service;
 
 import com.kupi.persistence.entity.CompetitionEntity;
 import com.kupi.persistence.repository.CompetitionRepository;
+import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.CompetitionDTO;
-import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import com.kupi.service.mapper.CompetitionMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.apache.commons.lang3.StringUtils;
@@ -28,8 +29,8 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionDTO saveCompetition(CompetitionDTO competitionDTO) {
-        CompetitionEntity competitionEntity = competitionMapper.toEntity(competitionDTO);
+    public CompetitionDTO saveCompetition(CompetitionRequest competitionRequest) {
+        CompetitionEntity competitionEntity = competitionMapper.toEntity(competitionRequest);
         competitionEntity.setUuid(idGenerator.generateId().toString());
         return competitionMapper.toDTO(competitionRepository.save(competitionEntity));
     }
@@ -40,7 +41,7 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public PagedResponse<CompetitionDTO> getAllCompetitions(CompetitionQueryParamsDTO params) {
+    public PagedResponse<CompetitionDTO> getAllCompetitions(BasicPageQueryParams params) {
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),
@@ -61,9 +62,9 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionDTO updateCompetition(Long id, CompetitionDTO competitionDTO) {
+    public CompetitionDTO updateCompetition(Long id, CompetitionRequest competitionRequest) {
         CompetitionEntity competitionEntity = getById(id);
-        competitionMapper.update(competitionEntity, competitionDTO);
+        competitionMapper.update(competitionEntity, competitionRequest);
         return competitionMapper.toDTO(competitionRepository.save(competitionEntity));
     }
 

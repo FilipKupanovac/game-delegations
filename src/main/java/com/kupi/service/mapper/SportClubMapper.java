@@ -1,20 +1,18 @@
 package com.kupi.service.mapper;
 
 import com.kupi.persistence.entity.SportClubEntity;
+import com.kupi.rest.api.request.SportClubRequest;
 import com.kupi.rest.dto.SportClubDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper
 public interface SportClubMapper {
 
-    @Mapping(target = "id", ignore = true)
-    SportClubEntity toEntity(SportClubDTO sportClubDTO);
+    SportClubEntity toEntity(SportClubRequest sportClubRequest);
 
     SportClubDTO toDTO(SportClubEntity sportClubEntity);
 
-    @Mapping(target = "id", ignore = true)
-    void update(@MappingTarget SportClubEntity sportClubEntity, SportClubDTO sportClubDTO);
+    void update(@MappingTarget SportClubEntity sportClubEntity, SportClubRequest sportClubRequest);
 }
 

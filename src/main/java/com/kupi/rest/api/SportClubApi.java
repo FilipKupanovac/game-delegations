@@ -1,5 +1,8 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.SportClubRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.SportClubDTO;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -11,15 +14,13 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.List;
-
 @Path("/v1/sport-club")
 public interface SportClubApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    SportClubDTO createSportsClubDTO(SportClubDTO sportClubDTO);
+    SportClubDTO createSportsClubDTO(SportClubRequest sportClubRequest);
 
     @GET
     @Path("/{id}")
@@ -28,13 +29,13 @@ public interface SportClubApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<SportClubDTO> getAllSportsClubsDTO();
+    PagedResponse<SportClubDTO> getAllSportsClubsDTO(BasicPageQueryParams params);
 
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    SportClubDTO updateSportsClubDTO(@PathParam("id") Long id, SportClubDTO sportClubDTO);
+    SportClubDTO updateSportsClubDTO(@PathParam("id") Long id, SportClubRequest sportClubRequest);
 
     @DELETE
     @Path("/{id}")

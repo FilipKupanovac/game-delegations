@@ -2,13 +2,18 @@ package com.kupi.service;
 
 import com.kupi.persistence.entity.TableOfficialEntity;
 import com.kupi.persistence.repository.TableOfficialRepository;
+import com.kupi.rest.api.request.TableOfficialRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.TableOfficialDTO;
 import com.kupi.service.mapper.TableOfficialMapper;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
-
-import java.util.List;
 
 @Service
 public class TableOfficialServiceImpl implements TableOfficialService {
@@ -24,8 +29,8 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public TableOfficialDTO saveTableOfficial(TableOfficialDTO tableOfficialDTO) {
-        TableOfficialEntity tableOfficialEntity = tableOfficialMapper.toEntity(tableOfficialDTO);
+    public TableOfficialDTO saveTableOfficial(TableOfficialRequest tableOfficialRequest) {
+        TableOfficialEntity tableOfficialEntity = tableOfficialMapper.toEntity(tableOfficialRequest);
         tableOfficialEntity.setUuid(idGenerator.generateId().toString());
         return tableOfficialMapper.toDTO(tableOfficialRepository.save(tableOfficialEntity));
     }
@@ -36,15 +41,30 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public List<TableOfficialDTO> getAllTableOfficials() {
-        // TODO - change to paging return with filters
-        return tableOfficialRepository.findAll().stream().map(tableOfficialMapper::toDTO).toList();
+    public PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params) {
+        PageRequest pageRequest = PageRequest.of(
+                params.getPage(),
+                params.getSize(),
+                Sort.Direction.fromOptionalString(params.getDirection()).orElse(Sort.Direction.ASC),
+                StringUtils.isNotBlank(params.getColumn()) ? params.getColumn() : "key"
+        );
+        if (tableOfficialRepository.count() < 1) {
+            return PagedResponse.fromPage(Page.empty());
+        }
+        Page<TableOfficialEntity> pageSlice = tableOfficialRepository.findAll(pageRequest);
+        Page<TableOfficialDTO> pageSliceDTO = pageSlice.map(tableOfficialMapper::toDTO);
+        PagedResponse<TableOfficialDTO> pagedResponse = PagedResponse.fromPage(pageSliceDTO);
+
+        if (params.getPage() > pagedResponse.getTotalPages()) {
+            throw new RuntimeException("Page out of bounds!");
+        }
+        return pagedResponse;
     }
 
     @Override
-    public TableOfficialDTO updateTableOfficial(Long id, TableOfficialDTO tableOfficialDTO) {
+    public TableOfficialDTO updateTableOfficial(Long id, TableOfficialRequest tableOfficialRequest) {
         TableOfficialEntity tableOfficialEntity = getById(id);
-        tableOfficialMapper.update(tableOfficialEntity, tableOfficialDTO);
+        tableOfficialMapper.update(tableOfficialEntity, tableOfficialRequest);
         return tableOfficialMapper.toDTO(tableOfficialRepository.save(tableOfficialEntity));
     }
 

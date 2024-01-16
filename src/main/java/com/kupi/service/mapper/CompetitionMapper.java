@@ -1,20 +1,18 @@
 package com.kupi.service.mapper;
 
 import com.kupi.persistence.entity.CompetitionEntity;
+import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.dto.CompetitionDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper
 public interface CompetitionMapper {
 
-    @Mapping(target = "id", ignore = true)
-    CompetitionEntity toEntity(CompetitionDTO competitionDTO);
+    CompetitionEntity toEntity(CompetitionRequest competitionRequest);
 
     CompetitionDTO toDTO(CompetitionEntity competitionEntity);
 
-    @Mapping(target = "id", ignore = true)
-    void update(@MappingTarget CompetitionEntity competitionEntity, CompetitionDTO competitionDTO);
+    void update(@MappingTarget CompetitionEntity competitionEntity, CompetitionRequest competitionRequest);
 }
 

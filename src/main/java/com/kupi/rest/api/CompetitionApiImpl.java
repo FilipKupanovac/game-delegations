@@ -1,8 +1,9 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.CompetitionDTO;
-import com.kupi.rest.dto.CompetitionQueryParamsDTO;
 import com.kupi.service.CompetitionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,9 @@ public class CompetitionApiImpl implements CompetitionApi {
     }
 
     @Override
-    public CompetitionDTO createCompetitionDTO(CompetitionDTO competitionDTO) {
-        log.info("CompetitionApi.createCompetitionDTO [{}]", competitionDTO);
-        return competitionService.saveCompetition(competitionDTO);
+    public CompetitionDTO createCompetitionDTO(CompetitionRequest competitionRequest) {
+        log.info("CompetitionApi.createCompetitionDTO [{}]", competitionRequest);
+        return competitionService.saveCompetition(competitionRequest);
     }
 
     @Override
@@ -32,15 +33,15 @@ public class CompetitionApiImpl implements CompetitionApi {
     }
 
     @Override
-    public PagedResponse<CompetitionDTO> getAllCompetitionsDTO(CompetitionQueryParamsDTO params) {
-        log.info("CompetitionApi.getAllCompetitionsDTO");
+    public PagedResponse<CompetitionDTO> getAllCompetitionsDTO(BasicPageQueryParams params) {
+        log.info("CompetitionApi.getAllCompetitionsDTO[{}]", params);
         return competitionService.getAllCompetitions(params);
     }
 
     @Override
-    public CompetitionDTO updateCompetitionDTO(Long id, CompetitionDTO competitionDTO) {
-        log.info("CompetitionApi.updateCompetitionDTO [id: {}, competitionDTO: {}]", id, competitionDTO);
-        return competitionService.updateCompetition(id, competitionDTO);
+    public CompetitionDTO updateCompetitionDTO(Long id, CompetitionRequest competitionRequest) {
+        log.info("CompetitionApi.updateCompetitionDTO [id: {}, competitionDTO: {}]", id, competitionRequest);
+        return competitionService.updateCompetition(id, competitionRequest);
     }
 
     @Override

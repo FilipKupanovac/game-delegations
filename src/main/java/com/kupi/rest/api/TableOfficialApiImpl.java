@@ -1,12 +1,13 @@
 package com.kupi.rest.api;
 
+import com.kupi.rest.api.request.TableOfficialRequest;
+import com.kupi.rest.api.response.PagedResponse;
+import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.TableOfficialDTO;
 import com.kupi.service.TableOfficialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TableOfficialApiImpl implements TableOfficialApi {
@@ -20,9 +21,9 @@ public class TableOfficialApiImpl implements TableOfficialApi {
     }
 
     @Override
-    public TableOfficialDTO createTableOfficialDTO(TableOfficialDTO tableOfficialDTO) {
-        log.info("TableOfficialApi.createTableOfficialDTO [{}]", tableOfficialDTO);
-        return tableOfficialService.saveTableOfficial(tableOfficialDTO);
+    public TableOfficialDTO createTableOfficialDTO(TableOfficialRequest tableOfficialRequest) {
+        log.info("TableOfficialApi.createTableOfficialDTO [{}]", tableOfficialRequest);
+        return tableOfficialService.saveTableOfficial(tableOfficialRequest);
     }
 
     @Override
@@ -32,15 +33,15 @@ public class TableOfficialApiImpl implements TableOfficialApi {
     }
 
     @Override
-    public List<TableOfficialDTO> getAllTableOfficialsDTO() {
-        log.info("TableOfficialApi.getAllTableOfficialsDTO");
-        return tableOfficialService.getAllTableOfficials();
+    public PagedResponse<TableOfficialDTO> getAllTableOfficialsDTO(BasicPageQueryParams params) {
+        log.info("TableOfficialApi.getAllTableOfficialsDTO [{}]", params);
+        return tableOfficialService.getAllTableOfficials(params);
     }
 
     @Override
-    public TableOfficialDTO updateTableOfficialDTO(Long id, TableOfficialDTO tableOfficialDTO) {
-        log.info("TableOfficialApi.updateTableOfficialDTO [id: {}, tableOfficialDTO: {}]", id, tableOfficialDTO);
-        return tableOfficialService.updateTableOfficial(id, tableOfficialDTO);
+    public TableOfficialDTO updateTableOfficialDTO(Long id, TableOfficialRequest tableOfficialRequest) {
+        log.info("TableOfficialApi.updateTableOfficialDTO [id: {}, tableOfficialDTO: {}]", id, tableOfficialRequest);
+        return tableOfficialService.updateTableOfficial(id, tableOfficialRequest);
     }
 
     @Override
