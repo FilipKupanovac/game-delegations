@@ -9,7 +9,7 @@ public class GameDelegationsApplication {
         SpringApplication.run(GameDelegationsApplication.class, args);
     }
     // TODO
-    //  - enable search by uuid, split DTO and request models for request and return type
+    //  - enable search by uuid
     //  - make database critical operations like delete secured with additional confirmation layer - this is for FE idea
     //  - provide functionality for table officials to set unavailability periods
     //  - provide functionality to display table official's games
