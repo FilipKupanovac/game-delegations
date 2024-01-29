@@ -21,10 +21,10 @@ public interface CompetitionService {
     /**
      * Return competition with provided identifier.
      *
-     * @param id identifier of competition
+     * @param uuid identifier of competition
      * @return competition representation
      */
-    CompetitionDTO getCompetitionById(Long id);
+    CompetitionDTO getCompetition(String uuid);
 
     /**
      * Page competitions.
@@ -37,16 +37,16 @@ public interface CompetitionService {
     /**
      * Update competition with provided identifier.
      *
-     * @param id                 competition identifier
+     * @param uuid
      * @param competitionRequest request to update competition
      * @return updated competition representation
      */
-    CompetitionDTO updateCompetition(Long id, CompetitionRequest competitionRequest);
+    CompetitionDTO updateCompetition(String uuid, CompetitionRequest competitionRequest);
 
     /**
      * Delete competition with provided identifier.
      *
-     * @param id competition identifier
+     * @param uuid competition identifier
      */
-    void deleteCompetition(Long id);
+    void deleteCompetition(String uuid);
 }

@@ -23,21 +23,21 @@ public interface VenueApi {
     VenueDTO createVenueDTO(VenueRequest venueRequest);
 
     @GET
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueDTO getVenueDTO(@PathParam("id") Long id);
+    VenueDTO getVenueDTO(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     PagedResponse<VenueDTO> getAllVenuesDTO(BasicPageQueryParams params);
 
     @PUT
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    VenueDTO updateVenueDTO(@PathParam("id") Long id, VenueRequest venueRequest);
+    VenueDTO updateVenueDTO(@PathParam("uuid") String uuid, VenueRequest venueRequest);
 
     @DELETE
-    @Path("/{id}")
-    void deleteVenueDTO(@PathParam("id") Long id);
+    @Path("/{uuid}")
+    void deleteVenueDTO(@PathParam("uuid") String uuid);
 }

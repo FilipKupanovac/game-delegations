@@ -21,32 +21,32 @@ public class TableOfficialApiImpl implements TableOfficialApi {
     }
 
     @Override
-    public TableOfficialDTO createTableOfficialDTO(TableOfficialRequest tableOfficialRequest) {
-        log.info("TableOfficialApi.createTableOfficialDTO [{}]", tableOfficialRequest);
+    public TableOfficialDTO createTableOfficial(TableOfficialRequest tableOfficialRequest) {
+        log.info("TableOfficialApi.createTableOfficial [{}]", tableOfficialRequest);
         return tableOfficialService.saveTableOfficial(tableOfficialRequest);
     }
 
     @Override
-    public TableOfficialDTO getTableOfficialDTO(Long id) {
-        log.info("TableOfficialApi.getTableOfficialDTO [{}]", id);
-        return tableOfficialService.getTableOfficialById(id);
+    public TableOfficialDTO getTableOfficial(String uuid) {
+        log.info("TableOfficialApi.getTableOfficial [{}]", uuid);
+        return tableOfficialService.getTableOfficial(uuid);
     }
 
     @Override
-    public PagedResponse<TableOfficialDTO> getAllTableOfficialsDTO(BasicPageQueryParams params) {
-        log.info("TableOfficialApi.getAllTableOfficialsDTO [{}]", params);
+    public PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params) {
+        log.info("TableOfficialApi.getAllTableOfficials [{}]", params);
         return tableOfficialService.getAllTableOfficials(params);
     }
 
     @Override
-    public TableOfficialDTO updateTableOfficialDTO(Long id, TableOfficialRequest tableOfficialRequest) {
-        log.info("TableOfficialApi.updateTableOfficialDTO [id: {}, tableOfficialDTO: {}]", id, tableOfficialRequest);
-        return tableOfficialService.updateTableOfficial(id, tableOfficialRequest);
+    public TableOfficialDTO updateTableOfficial(String uuid, TableOfficialRequest tableOfficialRequest) {
+        log.info("TableOfficialApi.updateTableOfficial [uuid: {}, tableOfficialDTO: {}]", uuid, tableOfficialRequest);
+        return tableOfficialService.updateTableOfficial(uuid, tableOfficialRequest);
     }
 
     @Override
-    public void deleteTableOfficialDTO(Long id) {
-        log.info("TableOfficialApi.deleteTableOfficialDTO [{}]", id);
-        tableOfficialService.deleteTableOfficial(id);
+    public void deleteTableOfficial(String uuid) {
+        log.info("TableOfficialApi.deleteTableOfficial [{}]", uuid);
+        tableOfficialService.deleteTableOfficial(uuid);
     }
 }

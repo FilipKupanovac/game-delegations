@@ -36,8 +36,8 @@ public class SportClubServiceImpl implements SportClubService {
     }
 
     @Override
-    public SportClubDTO getSportClubById(Long id) {
-        return sportClubMapper.toDTO(getById(id));
+    public SportClubDTO getSportClub(String uuid) {
+        return sportClubMapper.toDTO(getByUuid(uuid));
     }
 
     @Override
@@ -62,19 +62,19 @@ public class SportClubServiceImpl implements SportClubService {
     }
 
     @Override
-    public SportClubDTO updateSportClub(Long id, SportClubRequest sportClubRequest) {
-        SportClubEntity sportClubEntity = getById(id);
+    public SportClubDTO updateSportClub(String uuid, SportClubRequest sportClubRequest) {
+        SportClubEntity sportClubEntity = getByUuid(uuid);
         sportClubMapper.update(sportClubEntity, sportClubRequest);
         return sportClubMapper.toDTO(sportClubRepository.save(sportClubEntity));
     }
 
     @Override
-    public void deleteSportClub(Long id) {
-        sportClubRepository.delete(getById(id));
+    public void deleteSportClub(String uuid) {
+        sportClubRepository.delete(getByUuid(uuid));
     }
 
-    private SportClubEntity getById(Long id) {
-        return sportClubRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Sport Club with id " + id + " not found"));
+    private SportClubEntity getByUuid(String uuid) {
+        return sportClubRepository.findByUuid(uuid)
+                .orElseThrow(() -> new EntityNotFoundException("Sport Club with uuid " + uuid + " not found"));
     }
 }

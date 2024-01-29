@@ -36,8 +36,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public GameDTO getGameById(Long id) {
-        return gameMapper.toDTO(getById(id));
+    public GameDTO getGame(String uuid) {
+        return gameMapper.toDTO(getByUuid(uuid));
     }
 
     @Override
@@ -62,19 +62,19 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public GameDTO updateGame(Long id, GameRequest gameRequest) {
-        GameEntity gameEntity = getById(id);
+    public GameDTO updateGame(String uuid, GameRequest gameRequest) {
+        GameEntity gameEntity = getByUuid(uuid);
         gameMapper.update(gameEntity, gameRequest);
         return gameMapper.toDTO(gameRepository.save(gameEntity));
     }
 
     @Override
-    public void deleteGame(Long id) {
-        gameRepository.delete(getById(id));
+    public void deleteGame(String uuid) {
+        gameRepository.delete(getByUuid(uuid));
     }
 
-    private GameEntity getById(Long id) {
-        return gameRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Game with id " + id + " not found"));
+    private GameEntity getByUuid(String uuid) {
+        return gameRepository.findByUuid(uuid)
+                .orElseThrow(() -> new EntityNotFoundException("Game with uuid " + uuid + " not found"));
     }
 }

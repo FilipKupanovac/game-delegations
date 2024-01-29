@@ -21,10 +21,10 @@ public interface SportClubService {
     /**
      * Return sport club with provided identifier.
      *
-     * @param id identifier of sport club
+     * @param uuid identifier of sport club
      * @return sport club representation
      */
-    SportClubDTO getSportClubById(Long id);
+    SportClubDTO getSportClub(String uuid);
 
     /**
      * Page sport clubs.
@@ -37,16 +37,16 @@ public interface SportClubService {
     /**
      * Update sport club with provided identifier.
      *
-     * @param id               identifier of sport club
+     * @param uuid             identifier of sport club
      * @param sportClubRequest request to update sport club
      * @return updated sport club representation
      */
-    SportClubDTO updateSportClub(Long id, SportClubRequest sportClubRequest);
+    SportClubDTO updateSportClub(String uuid, SportClubRequest sportClubRequest);
 
     /**
      * Delete sport club with provided identifier.
      *
-     * @param id sport club identifier
+     * @param uuid sport club identifier
      */
-    void deleteSportClub(Long id);
+    void deleteSportClub(String uuid);
 }

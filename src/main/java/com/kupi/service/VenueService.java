@@ -21,10 +21,10 @@ public interface VenueService {
     /**
      * Retrieves a venue with the provided identifier.
      *
-     * @param id identifier of the venue
+     * @param uuid identifier of the venue
      * @return venue representation
      */
-    VenueDTO getVenueById(Long id);
+    VenueDTO getVenueById(String uuid);
 
     /**
      * Retrieves a list of all venues in the system.
@@ -36,16 +36,16 @@ public interface VenueService {
     /**
      * Updates a venue with the provided identifier.
      *
-     * @param id           venue identifier
+     * @param uuid         venue identifier
      * @param venueRequest request to update venue
      * @return updated venue representation
      */
-    VenueDTO updateVenue(Long id, VenueRequest venueRequest);
+    VenueDTO updateVenue(String uuid, VenueRequest venueRequest);
 
     /**
      * Deletes a venue with the provided identifier.
      *
-     * @param id venue identifier
+     * @param uuid venue identifier
      */
-    void deleteVenue(Long id);
+    void deleteVenue(String uuid);
 }

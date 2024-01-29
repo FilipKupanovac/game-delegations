@@ -21,10 +21,10 @@ public interface GameService {
     /**
      * Return game with provided identifier.
      *
-     * @param id identifier of competition
+     * @param uuid identifier of competition
      * @return game representation
      */
-    GameDTO getGameById(Long id);
+    GameDTO getGame(String uuid);
 
     /**
      * Page games.
@@ -37,17 +37,16 @@ public interface GameService {
     /**
      * Update game with provided identifier.
      *
-     * @param id          game identifier
+     * @param uuid        game identifier
      * @param gameRequest request to update game
      * @return updated game representation
      */
-    GameDTO updateGame(Long id, GameRequest gameRequest);
+    GameDTO updateGame(String uuid, GameRequest gameRequest);
 
     /**
      * Delete game with provided representation.
      *
-     * @param id game identifier
+     * @param uuid game identifier
      */
-    void deleteGame(Long id);
+    void deleteGame(String uuid);
 }
-

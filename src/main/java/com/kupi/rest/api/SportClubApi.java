@@ -20,24 +20,24 @@ public interface SportClubApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    SportClubDTO createSportsClubDTO(SportClubRequest sportClubRequest);
+    SportClubDTO createSportsClub(SportClubRequest sportClubRequest);
 
     @GET
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    SportClubDTO getSportsClubDTO(@PathParam("id") Long id);
+    SportClubDTO getSportsClub(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<SportClubDTO> getAllSportsClubsDTO(BasicPageQueryParams params);
+    PagedResponse<SportClubDTO> getAllSportsClubs(BasicPageQueryParams params);
 
     @PUT
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    SportClubDTO updateSportsClubDTO(@PathParam("id") Long id, SportClubRequest sportClubRequest);
+    SportClubDTO updateSportsClub(@PathParam("uuid") String uuid, SportClubRequest sportClubRequest);
 
     @DELETE
-    @Path("/{id}")
-    void deleteSportsClubDTO(@PathParam("id") Long id);
+    @Path("/{uuid}")
+    void deleteSportsClub(@PathParam("uuid") String uuid);
 }

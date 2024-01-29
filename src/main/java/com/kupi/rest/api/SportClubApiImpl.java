@@ -21,32 +21,32 @@ public class SportClubApiImpl implements SportClubApi {
     }
 
     @Override
-    public SportClubDTO createSportsClubDTO(SportClubRequest sportClubRequest) {
-        log.info("SportsClubApi.createSportClubDTO [{}]", sportClubRequest);
+    public SportClubDTO createSportsClub(SportClubRequest sportClubRequest) {
+        log.info("SportsClubApi.createSportClub [{}]", sportClubRequest);
         return sportClubService.saveSportClub(sportClubRequest);
     }
 
     @Override
-    public SportClubDTO getSportsClubDTO(Long id) {
-        log.info("SportsClubApi.getSportClubDTO [{}]", id);
-        return sportClubService.getSportClubById(id);
+    public SportClubDTO getSportsClub(String uuid) {
+        log.info("SportsClubApi.getSportClub [{}]", uuid);
+        return sportClubService.getSportClub(uuid);
     }
 
     @Override
-    public PagedResponse<SportClubDTO> getAllSportsClubsDTO(BasicPageQueryParams params) {
-        log.info("SportsClubApi.getAllSportClubsDTO [{}]", params);
+    public PagedResponse<SportClubDTO> getAllSportsClubs(BasicPageQueryParams params) {
+        log.info("SportsClubApi.getAllSportClubs [{}]", params);
         return sportClubService.getAllSportClubs(params);
     }
 
     @Override
-    public SportClubDTO updateSportsClubDTO(Long id, SportClubRequest sportClubRequest) {
-        log.info("SportsClubApi.updateSportClubDTO [{}, {}]", id, sportClubRequest);
-        return sportClubService.updateSportClub(id, sportClubRequest);
+    public SportClubDTO updateSportsClub(String uuid, SportClubRequest sportClubRequest) {
+        log.info("SportsClubApi.updateSportClub [{}, {}]", uuid, sportClubRequest);
+        return sportClubService.updateSportClub(uuid, sportClubRequest);
     }
 
     @Override
-    public void deleteSportsClubDTO(Long id) {
-        log.info("SportsClubApi.deleteSportClubDTO [{}]", id);
-        sportClubService.deleteSportClub(id);
+    public void deleteSportsClub(String uuid) {
+        log.info("SportsClubApi.deleteSportClub [{}]", uuid);
+        sportClubService.deleteSportClub(uuid);
     }
 }

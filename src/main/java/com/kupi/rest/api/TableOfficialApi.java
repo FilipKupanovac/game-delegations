@@ -20,24 +20,24 @@ public interface TableOfficialApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    TableOfficialDTO createTableOfficialDTO(TableOfficialRequest tableOfficialRequest);
+    TableOfficialDTO createTableOfficial(TableOfficialRequest tableOfficialRequest);
 
     @GET
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    TableOfficialDTO getTableOfficialDTO(@PathParam("id") Long id);
+    TableOfficialDTO getTableOfficial(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<TableOfficialDTO> getAllTableOfficialsDTO(BasicPageQueryParams params);
+    PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params);
 
     @PUT
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    TableOfficialDTO updateTableOfficialDTO(@PathParam("id") Long id, TableOfficialRequest tableOfficialRequest);
+    TableOfficialDTO updateTableOfficial(@PathParam("uuid") String uuid, TableOfficialRequest tableOfficialRequest);
 
     @DELETE
-    @Path("/{id}")
-    void deleteTableOfficialDTO(@PathParam("id") Long id);
+    @Path("/{uuid}")
+    void deleteTableOfficial(@PathParam("uuid") String uuid);
 }

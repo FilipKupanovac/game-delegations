@@ -18,12 +18,12 @@ public interface TableOfficialService {
     TableOfficialDTO saveTableOfficial(TableOfficialRequest tableOfficialRequest);
 
     /**
-     * Return table official with provided id.
+     * Return table official with provided UUID.
      *
-     * @param id identifier of table official
+     * @param uuid UUID of table official
      * @return table official representation
      */
-    TableOfficialDTO getTableOfficialById(Long id);
+    TableOfficialDTO getTableOfficial(String uuid);
 
     /**
      * Page table officials.
@@ -34,18 +34,18 @@ public interface TableOfficialService {
     PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params);
 
     /**
-     * Update table official with provided identifier.
+     * Update table official with provided UUID.
      *
-     * @param id                   table official identifier
+     * @param uuid                 table official UUID
      * @param tableOfficialRequest request to update table official
      * @return updated table official representation
      */
-    TableOfficialDTO updateTableOfficial(Long id, TableOfficialRequest tableOfficialRequest);
+    TableOfficialDTO updateTableOfficial(String uuid, TableOfficialRequest tableOfficialRequest);
 
     /**
-     * Delete table official with provided identifier.
+     * Delete table official with provided UUID.
      *
-     * @param id table official identifier
+     * @param uuid table official UUID
      */
-    void deleteTableOfficial(Long id);
+    void deleteTableOfficial(String uuid);
 }

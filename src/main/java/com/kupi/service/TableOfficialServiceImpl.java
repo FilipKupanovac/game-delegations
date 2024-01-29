@@ -36,8 +36,8 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public TableOfficialDTO getTableOfficialById(Long id) {
-        return tableOfficialMapper.toDTO(getById(id));
+    public TableOfficialDTO getTableOfficial(String uuid) {
+        return tableOfficialMapper.toDTO(getByUuid(uuid));
     }
 
     @Override
@@ -62,19 +62,19 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public TableOfficialDTO updateTableOfficial(Long id, TableOfficialRequest tableOfficialRequest) {
-        TableOfficialEntity tableOfficialEntity = getById(id);
+    public TableOfficialDTO updateTableOfficial(String uuid, TableOfficialRequest tableOfficialRequest) {
+        TableOfficialEntity tableOfficialEntity = getByUuid(uuid);
         tableOfficialMapper.update(tableOfficialEntity, tableOfficialRequest);
         return tableOfficialMapper.toDTO(tableOfficialRepository.save(tableOfficialEntity));
     }
 
     @Override
-    public void deleteTableOfficial(Long id) {
-        tableOfficialRepository.delete(getById(id));
+    public void deleteTableOfficial(String uuid) {
+        tableOfficialRepository.delete(getByUuid(uuid));
     }
 
-    private TableOfficialEntity getById(Long id) {
-        return tableOfficialRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Table Official with id " + id + " not found"));
+    private TableOfficialEntity getByUuid(String uuid) {
+        return tableOfficialRepository.findByUuid(uuid)
+                .orElseThrow(() -> new EntityNotFoundException("Table Official with UUID " + uuid + " not found"));
     }
 }

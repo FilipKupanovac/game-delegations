@@ -36,8 +36,8 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionDTO getCompetitionById(Long id) {
-        return competitionMapper.toDTO(getById(id));
+    public CompetitionDTO getCompetition(String uuid) {
+        return competitionMapper.toDTO(getById(uuid));
     }
 
     @Override
@@ -62,19 +62,19 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionDTO updateCompetition(Long id, CompetitionRequest competitionRequest) {
-        CompetitionEntity competitionEntity = getById(id);
+    public CompetitionDTO updateCompetition(String uuid, CompetitionRequest competitionRequest) {
+        CompetitionEntity competitionEntity = getById(uuid);
         competitionMapper.update(competitionEntity, competitionRequest);
         return competitionMapper.toDTO(competitionRepository.save(competitionEntity));
     }
 
     @Override
-    public void deleteCompetition(Long id) {
-        competitionRepository.delete(getById(id));
+    public void deleteCompetition(String uuid) {
+        competitionRepository.delete(getById(uuid));
     }
 
-    private CompetitionEntity getById(Long id) {
-        return competitionRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Competition with id " + id + " not found"));
+    private CompetitionEntity getById(String uuid) {
+        return competitionRepository.findByUuid(uuid)
+                .orElseThrow(() -> new EntityNotFoundException("Competition with id " + uuid + " not found"));
     }
 }

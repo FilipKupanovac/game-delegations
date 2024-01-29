@@ -21,32 +21,32 @@ public class GameApiImpl implements GameApi {
     }
 
     @Override
-    public GameDTO createGameDTO(GameRequest gameRequest) {
-        log.info("GameApi.createGameDTO [{}]", gameRequest);
+    public GameDTO createGame(GameRequest gameRequest) {
+        log.info("GameApi.createGame [{}]", gameRequest);
         return gameService.saveGame(gameRequest);
     }
 
     @Override
-    public GameDTO getGameDTO(Long id) {
-        log.info("GameApi.getGameDTO [{}]", id);
-        return gameService.getGameById(id);
+    public GameDTO getGame(String uuid) {
+        log.info("GameApi.getGame [{}]", uuid);
+        return gameService.getGame(uuid); // Assuming there is a method getGameById(String uuid) in GameService
     }
 
     @Override
-    public PagedResponse<GameDTO> getAllGamesDTO(BasicPageQueryParams params) {
-        log.info("GameApi.getAllGamesDTO [{}]", params);
+    public PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params) {
+        log.info("GameApi.getAllGames [{}]", params);
         return gameService.getAllGames(params);
     }
 
     @Override
-    public GameDTO updateGameDTO(Long id, GameRequest gameRequest) {
-        log.info("GameApi.updateGameDTO [id: {}, gameDTO: {}]", id, gameRequest);
-        return gameService.updateGame(id, gameRequest);
+    public GameDTO updateGame(String uuid, GameRequest gameRequest) {
+        log.info("GameApi.updateGame [uuid: {}, gameDTO: {}]", uuid, gameRequest);
+        return gameService.updateGame(uuid, gameRequest);
     }
 
     @Override
-    public void deleteGameDTO(Long id) {
-        log.info("GameApi.deleteGameDTO [{}]", id);
-        gameService.deleteGame(id);
+    public void deleteGame(String uuid) {
+        log.info("GameApi.deleteGame [{}]", uuid);
+        gameService.deleteGame(uuid);
     }
 }

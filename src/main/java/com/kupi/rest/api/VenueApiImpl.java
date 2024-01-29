@@ -27,9 +27,9 @@ public class VenueApiImpl implements VenueApi {
     }
 
     @Override
-    public VenueDTO getVenueDTO(Long id) {
-        log.info("VenueApi.getVenueDTO [{}]", id);
-        return venueService.getVenueById(id);
+    public VenueDTO getVenueDTO(String uuid) {
+        log.info("VenueApi.getVenueDTO [{}]", uuid);
+        return venueService.getVenueById(uuid);
     }
 
     @Override
@@ -39,14 +39,14 @@ public class VenueApiImpl implements VenueApi {
     }
 
     @Override
-    public VenueDTO updateVenueDTO(Long id, VenueRequest venueRequest) {
-        log.info("VenueApi.updateVenueDTO [id: {}, venueDTO: {}]", id, venueRequest);
-        return venueService.updateVenue(id, venueRequest);
+    public VenueDTO updateVenueDTO(String uuid, VenueRequest venueRequest) {
+        log.info("VenueApi.updateVenueDTO [uuid: {}, venueDTO: {}]", uuid, venueRequest);
+        return venueService.updateVenue(uuid, venueRequest);
     }
 
     @Override
-    public void deleteVenueDTO(Long id) {
-        log.info("VenueApi.deleteVenueDTO [{}]", id);
-        venueService.deleteVenue(id);
+    public void deleteVenueDTO(String uuid) {
+        log.info("VenueApi.deleteVenueDTO [{}]", uuid);
+        venueService.deleteVenue(uuid);
     }
 }

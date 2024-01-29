@@ -36,8 +36,8 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public VenueDTO getVenueById(Long id) {
-        return venueMapper.toDTO(getById(id));
+    public VenueDTO getVenueById(String uuid) {
+        return venueMapper.toDTO(getByUuid(uuid));
     }
 
     @Override
@@ -62,19 +62,19 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public VenueDTO updateVenue(Long id, VenueRequest venueRequest) {
-        VenueEntity venueEntity = getById(id);
+    public VenueDTO updateVenue(String uuid, VenueRequest venueRequest) {
+        VenueEntity venueEntity = getByUuid(uuid);
         venueMapper.update(venueEntity, venueRequest);
         return venueMapper.toDTO(venueRepository.save(venueEntity));
     }
 
     @Override
-    public void deleteVenue(Long id) {
-        venueRepository.delete(getById(id));
+    public void deleteVenue(String uuid) {
+        venueRepository.delete(getByUuid(uuid));
     }
 
-    private VenueEntity getById(Long id) {
-        return venueRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Venue with id " + id + " not found"));
+    private VenueEntity getByUuid(String uuid) {
+        return venueRepository.findByUuid(uuid)
+                .orElseThrow(() -> new EntityNotFoundException("Venue with uuid " + uuid + " not found"));
     }
 }

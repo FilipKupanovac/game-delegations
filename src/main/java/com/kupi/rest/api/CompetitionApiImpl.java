@@ -21,32 +21,32 @@ public class CompetitionApiImpl implements CompetitionApi {
     }
 
     @Override
-    public CompetitionDTO createCompetitionDTO(CompetitionRequest competitionRequest) {
-        log.info("CompetitionApi.createCompetitionDTO [{}]", competitionRequest);
+    public CompetitionDTO createCompetition(CompetitionRequest competitionRequest) {
+        log.info("CompetitionApi.createCompetition [{}]", competitionRequest);
         return competitionService.saveCompetition(competitionRequest);
     }
 
     @Override
-    public CompetitionDTO getCompetitionDTO(Long id) {
-        log.info("CompetitionApi.getCompetitionDTO [{}]", id);
-        return competitionService.getCompetitionById(id);
+    public CompetitionDTO getCompetition(String uuid) {
+        log.info("CompetitionApi.getCompetition [{}]", uuid);
+        return competitionService.getCompetition(uuid);
     }
 
     @Override
-    public PagedResponse<CompetitionDTO> getAllCompetitionsDTO(BasicPageQueryParams params) {
-        log.info("CompetitionApi.getAllCompetitionsDTO[{}]", params);
+    public PagedResponse<CompetitionDTO> getAllCompetitions(BasicPageQueryParams params) {
+        log.info("CompetitionApi.getAllCompetitions [{}]", params);
         return competitionService.getAllCompetitions(params);
     }
 
     @Override
-    public CompetitionDTO updateCompetitionDTO(Long id, CompetitionRequest competitionRequest) {
-        log.info("CompetitionApi.updateCompetitionDTO [id: {}, competitionDTO: {}]", id, competitionRequest);
-        return competitionService.updateCompetition(id, competitionRequest);
+    public CompetitionDTO updateCompetition(String uuid, CompetitionRequest competitionRequest) {
+        log.info("CompetitionApi.updateCompetition [uuid: {}, competitionDTO: {}]", uuid, competitionRequest);
+        return competitionService.updateCompetition(uuid, competitionRequest);
     }
 
     @Override
-    public void deleteCompetitionDTO(Long id) {
-        log.info("CompetitionApi.deleteCompetitionDTO [{}]", id);
-        competitionService.deleteCompetition(id);
+    public void deleteCompetition(String uuid) {
+        log.info("CompetitionApi.deleteCompetition [{}]", uuid);
+        competitionService.deleteCompetition(uuid);
     }
 }

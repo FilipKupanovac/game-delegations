@@ -20,24 +20,24 @@ public interface GameApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    GameDTO createGameDTO(GameRequest gameRequest);
+    GameDTO createGame(GameRequest gameRequest);
 
     @GET
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    GameDTO getGameDTO(@PathParam("id") Long id);
+    GameDTO getGame(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<GameDTO> getAllGamesDTO(BasicPageQueryParams params);
+    PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params);
 
     @PUT
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    GameDTO updateGameDTO(@PathParam("id") Long id, GameRequest gameRequest);
+    GameDTO updateGame(@PathParam("uuid") String uuid, GameRequest gameRequest);
 
     @DELETE
-    @Path("/{id}")
-    void deleteGameDTO(@PathParam("id") Long id);
+    @Path("/{uuid}")
+    void deleteGame(@PathParam("uuid") String uuid);
 }

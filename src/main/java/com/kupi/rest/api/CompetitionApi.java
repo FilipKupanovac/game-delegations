@@ -20,24 +20,24 @@ public interface CompetitionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO createCompetitionDTO(CompetitionRequest competitionRequest);
+    CompetitionDTO createCompetition(CompetitionRequest competitionRequest);
 
     @GET
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO getCompetitionDTO(@PathParam("id") Long id);
+    CompetitionDTO getCompetition(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<CompetitionDTO> getAllCompetitionsDTO(BasicPageQueryParams params);
+    PagedResponse<CompetitionDTO> getAllCompetitions(BasicPageQueryParams params);
 
     @PUT
-    @Path("/{id}")
+    @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO updateCompetitionDTO(@PathParam("id") Long id, CompetitionRequest competitionRequest);
+    CompetitionDTO updateCompetition(@PathParam("uuid") String uuid, CompetitionRequest competitionRequest);
 
     @DELETE
-    @Path("/{id}")
-    void deleteCompetitionDTO(@PathParam("id") Long id);
+    @Path("/{uuid}")
+    void deleteCompetition(@PathParam("uuid") String uuid);
 }
