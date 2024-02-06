@@ -57,3 +57,13 @@ CREATE TABLE game
     FOREIGN KEY (statistician_id) REFERENCES table_official (id),
     FOREIGN KEY (statistician_assistant_id) REFERENCES table_official (id)
 );
+
+CREATE TABLE unavailability_period
+(
+    id                BIGINT PRIMARY KEY,
+    uuid              VARCHAR(36) NOT NULL,
+    table_official_id VARCHAR(36)
+        CONSTRAINT fk__unavailability_date__t_official REFERENCES table_official (id),
+    from              TIMESTAMP   NOT NULL,
+    until             TIMESTAMP   NOT NULL
+);

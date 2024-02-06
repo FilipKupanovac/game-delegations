@@ -6,7 +6,7 @@ import com.kupi.rest.dto.CompetitionDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CompetitionMapper {
 
     CompetitionEntity toEntity(CompetitionRequest competitionRequest);

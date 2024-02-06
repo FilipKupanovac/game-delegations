@@ -3,6 +3,7 @@ package com.kupi.rest.dto;
 import com.kupi.rest.api.base.BaseGame;
 
 public class GameDTO extends BaseGame {
+    private CompetitionDTO competition;
 
     private VenueDTO venue;
 

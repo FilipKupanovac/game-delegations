@@ -6,7 +6,7 @@ import com.kupi.rest.dto.GameDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface GameMapper {
 
     GameEntity toEntity(GameRequest gameRequest);

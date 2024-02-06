@@ -6,7 +6,7 @@ import com.kupi.rest.dto.TableOfficialDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TableOfficialMapper {
 
     TableOfficialEntity toEntity(TableOfficialRequest tableOfficialRequest);

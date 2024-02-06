@@ -6,7 +6,7 @@ import com.kupi.rest.dto.SportClubDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface SportClubMapper {
 
     SportClubEntity toEntity(SportClubRequest sportClubRequest);

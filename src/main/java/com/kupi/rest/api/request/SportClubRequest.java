@@ -1,4 +1,6 @@
 package com.kupi.rest.api.request;
 
-public class SportClubRequest {
+import com.kupi.rest.api.base.BaseSportClub;
+
+public class SportClubRequest extends BaseSportClub {
 }
