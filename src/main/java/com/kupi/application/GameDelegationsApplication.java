@@ -12,9 +12,9 @@ public class GameDelegationsApplication {
     //  - make database critical operations like delete secured with additional confirmation layer - this is for FE idea
     //  - CRITICAL: enable security, JWT tokens, refresh, keycloak
     //  - implement assigning officials to the game based on unavailability, do not assign people if they are unavailable 1:30 before and 2:30 after game start
-    //  - implement unmappedTargetPolicy = ReportingPolicy.ERROR into mappers and fix mappers accordingly
     //  - provide functionality to display table official's games
     //  - provide functionality for table official to accept or reject game. Optional - add reason text field
+    //  - CREATE assignment table, which would store game_id, official_id, position, acceptedStatus (Y/N), description?,
     //  ,
     //  - optional:
     //     - make table official reports to be done by commissioner

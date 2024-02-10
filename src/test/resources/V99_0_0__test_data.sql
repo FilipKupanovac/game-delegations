@@ -39,3 +39,5 @@ values (1, '3333aaaa-bbbb-cccc-dddd-eeeeffff0001', 'a', 'a'),
        (20, '3333aaaa-bbbb-cccc-dddd-eeeeffff0020', 't', 't');
 
 -- insert game test data
+INSERT INTO game (id, uuid, competition_id, start_time, game_number, venue_id, host_id, guest_id, scorer_id, timer_id, shot_clock_id, statistician_id, statistician_assistant_id)
+VALUES (1, '4444aaaa-bbbb-cccc-dddd-eeeeffff0001', 1, '2024-02-09 12:00:00', 1, 1, 1, 5, 11, 12, 13, 14, 15);
