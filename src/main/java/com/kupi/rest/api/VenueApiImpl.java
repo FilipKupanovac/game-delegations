@@ -7,9 +7,9 @@ import com.kupi.rest.dto.VenueDTO;
 import com.kupi.service.VenueService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
+@RestController
 public class VenueApiImpl implements VenueApi {
 
     private static final Logger log = LoggerFactory.getLogger(VenueApiImpl.class);

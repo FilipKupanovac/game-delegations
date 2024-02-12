@@ -7,9 +7,9 @@ import com.kupi.rest.dto.TableOfficialDTO;
 import com.kupi.service.TableOfficialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
+@RestController
 public class TableOfficialApiImpl implements TableOfficialApi {
 
     private static final Logger log = LoggerFactory.getLogger(TableOfficialApiImpl.class);

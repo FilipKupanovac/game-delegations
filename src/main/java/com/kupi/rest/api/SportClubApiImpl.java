@@ -7,9 +7,9 @@ import com.kupi.rest.dto.SportClubDTO;
 import com.kupi.service.SportClubService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
+@RestController
 public class SportClubApiImpl implements SportClubApi {
 
     private static final Logger log = LoggerFactory.getLogger(SportClubApiImpl.class);

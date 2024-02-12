@@ -2,7 +2,7 @@ spring:
   application:
     name: Game Delegations Application
   datasource:
-    url: "jdbc:postgresql://localhost:5432/postgres"
+    url: jdbc:postgresql://localhost:5432/uksgo
     driver-class-name: org.postgresql.Driver
     username: uksgo
     password: uksgopass
@@ -13,6 +13,9 @@ spring:
         jdbc:
           use_streams_for_binary: true
         default_schema: ${game-delegations.schema}
+  flyway:
+    enabled: true
+    validate-on-migrate: true
 
 game-delegations:
-  schema: game-delegations
+  schema: public

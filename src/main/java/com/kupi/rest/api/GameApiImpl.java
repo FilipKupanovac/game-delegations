@@ -7,9 +7,9 @@ import com.kupi.rest.dto.GameDTO;
 import com.kupi.service.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
+@RestController
 public class GameApiImpl implements GameApi {
 
     private static final Logger log = LoggerFactory.getLogger(GameApiImpl.class);

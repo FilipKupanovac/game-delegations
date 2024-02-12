@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +24,6 @@ public class VenueEntity {
     @Column(name = "id")
     private Long id;
 
-    @UUID(version = 4)
     @Column(name = "uuid")
     private String uuid;
 

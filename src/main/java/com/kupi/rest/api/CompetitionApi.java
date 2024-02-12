@@ -4,40 +4,28 @@ import com.kupi.rest.api.request.CompetitionRequest;
 import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.CompetitionDTO;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Path("/v1/competition")
+@RequestMapping("/v1/competition")
 public interface CompetitionApi {
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @PostMapping
     CompetitionDTO createCompetition(CompetitionRequest competitionRequest);
 
-    @GET
-    @Path("/{uuid}")
-    @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO getCompetition(@PathParam("uuid") String uuid);
+    @GetMapping("/{uuid}")
+    CompetitionDTO getCompetition(@PathVariable String uuid);
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @GetMapping
     PagedResponse<CompetitionDTO> getAllCompetitions(BasicPageQueryParams params);
 
-    @PUT
-    @Path("/{uuid}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    CompetitionDTO updateCompetition(@PathParam("uuid") String uuid, CompetitionRequest competitionRequest);
+    @PutMapping("/{uuid}")
+    CompetitionDTO updateCompetition(@PathVariable String uuid, CompetitionRequest competitionRequest);
 
-    @DELETE
-    @Path("/{uuid}")
-    void deleteCompetition(@PathParam("uuid") String uuid);
+    @DeleteMapping("/{uuid}")
+    void deleteCompetition(@PathVariable String uuid);
 }

@@ -7,9 +7,9 @@ import com.kupi.rest.dto.CompetitionDTO;
 import com.kupi.service.CompetitionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
+@RestController
 public class CompetitionApiImpl implements CompetitionApi {
 
     private static final Logger log = LoggerFactory.getLogger(CompetitionApiImpl.class);

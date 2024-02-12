@@ -24,12 +24,12 @@ CREATE TABLE sport_club
 
 CREATE TABLE venue
 (
-    id      BIGINT PRIMARY KEY,
-    uuid    VARCHAR(36) NOT NULL,
-    name    VARCHAR(255),
-    address VARCHAR(255),
-    latitude DOUBLE,
-    longitude DOUBLE
+    id        BIGINT PRIMARY KEY,
+    uuid      VARCHAR(36) NOT NULL,
+    name      VARCHAR(255),
+    address   VARCHAR(255),
+    latitude  DECIMAL,
+    longitude DECIMAL
 );
 
 CREATE TABLE game
@@ -62,8 +62,8 @@ CREATE TABLE unavailability_period
 (
     id                BIGINT PRIMARY KEY,
     uuid              VARCHAR(36) NOT NULL,
-    table_official_id VARCHAR(36)
+    table_official_id BIGINT
         CONSTRAINT fk__unavailability_date__t_official REFERENCES table_official (id),
-    from              TIMESTAMP   NOT NULL,
+    "from"            TIMESTAMP   NOT NULL,
     until             TIMESTAMP   NOT NULL
 );
