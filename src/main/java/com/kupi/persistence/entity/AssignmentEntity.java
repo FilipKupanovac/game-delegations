@@ -1,7 +1,10 @@
 package com.kupi.persistence.entity;
 
+import com.kupi.persistence.type.TableOfficialPosition;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,15 +16,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Getter
 @Setter
-@Table(name = "game")
-public class GameEntity {
+@Table(name = "assignment")
+public class AssignmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,25 +32,18 @@ public class GameEntity {
     @Column(name = "uuid")
     private String uuid;
 
-    @ManyToOne
-    @JoinColumn(name = "competition")
-    private CompetitionEntity competition;
+    @Column(name = "accepted")
+    private Boolean accepted;
 
-    @Column(name = "game_number")
-    private Integer gameNumber;
-
-    @Column(name = "start_time")
-    private Instant startTime;
+    @Column(name = "position")
+    @Enumerated(value = EnumType.STRING)
+    private TableOfficialPosition position;
 
     @ManyToOne
-    @JoinColumn(name = "venue")
-    private VenueEntity venue;
+    @JoinColumn(name = "table_official_id")
+    private TableOfficialEntity tableOfficial;
 
     @ManyToOne
-    @JoinColumn(name = "host")
-    private SportClubEntity host;
-
-    @ManyToOne
-    @JoinColumn(name = "guest")
-    private SportClubEntity guest;
+    @JoinColumn(name = "game_id")
+    private GameEntity game;
 }

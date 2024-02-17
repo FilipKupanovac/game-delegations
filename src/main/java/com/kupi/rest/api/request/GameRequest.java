@@ -14,21 +14,11 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class GameRequest extends BaseGame {
 
-    private String competitionId;
+    private String competitionUuid;
 
-    private String venueId;
+    private String venueUuid;
 
-    private String hostId;
+    private String hostUuid;
 
-    private String guestId;
-
-    private String tableOfficialScorerId;
-
-    private String tableOfficialTimeId;
-
-    private String tableOfficialShotClockOperatorId;
-
-    private String tableOfficialStatisticianId;
-
-    private String tableOfficialStatisticianAssistantId;
+    private String guestUuid;
 }

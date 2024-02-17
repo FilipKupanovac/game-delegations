@@ -17,11 +17,6 @@ public interface GameMapper {
     @Mapping(target = "venue", ignore = true)
     @Mapping(target = "host", ignore = true)
     @Mapping(target = "guest", ignore = true)
-    @Mapping(target = "scorer", ignore = true)
-    @Mapping(target = "timer", ignore = true)
-    @Mapping(target = "shotClockOperator", ignore = true)
-    @Mapping(target = "statistician", ignore = true)
-    @Mapping(target = "statisticianAssistant", ignore = true)
     GameEntity toEntity(GameRequest gameRequest);
 
     GameDTO toDTO(GameEntity gameEntity);
@@ -32,10 +27,5 @@ public interface GameMapper {
     @Mapping(target = "venue", ignore = true)
     @Mapping(target = "host", ignore = true)
     @Mapping(target = "guest", ignore = true)
-    @Mapping(target = "scorer", ignore = true)
-    @Mapping(target = "timer", ignore = true)
-    @Mapping(target = "shotClockOperator", ignore = true)
-    @Mapping(target = "statistician", ignore = true)
-    @Mapping(target = "statisticianAssistant", ignore = true)
     void update(@MappingTarget GameEntity gameEntity, GameRequest gameRequest);
 }

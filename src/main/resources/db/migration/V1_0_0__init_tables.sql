@@ -34,28 +34,18 @@ CREATE TABLE venue
 
 CREATE TABLE game
 (
-    id                        BIGINT PRIMARY KEY,
-    uuid                      VARCHAR(36) NOT NULL,
-    competition_id            BIGINT,
-    start_time                TIMESTAMP,
-    game_number               BIGINT,
-    venue_id                  BIGINT,
-    host_id                   BIGINT,
-    guest_id                  BIGINT,
-    scorer_id                 BIGINT,
-    timer_id                  BIGINT,
-    shot_clock_id             BIGINT,
-    statistician_id           BIGINT,
-    statistician_assistant_id BIGINT,
+    id             BIGINT PRIMARY KEY,
+    uuid           VARCHAR(36) NOT NULL,
+    competition_id BIGINT,
+    start_time     TIMESTAMP,
+    game_number    BIGINT,
+    venue_id       BIGINT,
+    host_id        BIGINT,
+    guest_id       BIGINT,
     FOREIGN KEY (competition_id) REFERENCES competition (id),
     FOREIGN KEY (venue_id) REFERENCES venue (id),
     FOREIGN KEY (host_id) REFERENCES sport_club (id),
-    FOREIGN KEY (guest_id) REFERENCES sport_club (id),
-    FOREIGN KEY (scorer_id) REFERENCES table_official (id),
-    FOREIGN KEY (timer_id) REFERENCES table_official (id),
-    FOREIGN KEY (shot_clock_id) REFERENCES table_official (id),
-    FOREIGN KEY (statistician_id) REFERENCES table_official (id),
-    FOREIGN KEY (statistician_assistant_id) REFERENCES table_official (id)
+    FOREIGN KEY (guest_id) REFERENCES sport_club (id)
 );
 
 CREATE TABLE unavailability_period
@@ -66,4 +56,17 @@ CREATE TABLE unavailability_period
         CONSTRAINT fk__unavailability_date__t_official REFERENCES table_official (id),
     "from"            TIMESTAMP   NOT NULL,
     until             TIMESTAMP   NOT NULL
+);
+
+CREATE TABLE assignment
+(
+    id                BIGINT PRIMARY KEY,
+    uuid              VARCHAR(36) NOT NULL,
+    accepted          BOOLEAN     NOT NULL DEFAULT false,
+    position          VARCHAR(25) CHECK ( position IN
+                                          ('SCORER', 'TIMER', 'SHOT_CLOCK_OPERATOR', 'STATISTICIAN', 'SCORER_ASSISTANT', 'STATISTICIAN_ASSISTANT_1', 'STATISTICIAN_ASSISTANT_2') ),
+    table_official_id BIGINT
+        CONSTRAINT fk__assignment__t_official REFERENCES table_official (id),
+    game_id           BIGINT
+        CONSTRAINT fk__assignment__game REFERENCES game (id)
 );
