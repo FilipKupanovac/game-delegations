@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/sport-club")
+@Path("/v1/sport-clubs")
 public interface SportClubApi {
 
     @POST
@@ -29,7 +29,7 @@ public interface SportClubApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<SportClubDTO> getAllSportsClubs(BasicPageQueryParams params);
+    PagedResponse<SportClubDTO> getSportsClubs(BasicPageQueryParams params);
 
     @PUT
     @Path("/{uuid}")

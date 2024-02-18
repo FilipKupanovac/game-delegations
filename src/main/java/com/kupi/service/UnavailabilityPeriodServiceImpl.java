@@ -45,7 +45,7 @@ public class UnavailabilityPeriodServiceImpl implements UnavailabilityPeriodServ
     }
 
     @Override
-    public PagedResponse<UnavailabilityPeriodDTO> getAllUnavailabilityPeriods(BasicPageQueryParams params) {
+    public PagedResponse<UnavailabilityPeriodDTO> getUnavailabilityPeriods(BasicPageQueryParams params) {
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),

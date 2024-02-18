@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/table-official")
+@Path("/v1/table-officials")
 public interface TableOfficialApi {
 
     @POST
@@ -29,7 +29,7 @@ public interface TableOfficialApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params);
+    PagedResponse<TableOfficialDTO> getTableOfficials(BasicPageQueryParams params);
 
     @PUT
     @Path("/{uuid}")

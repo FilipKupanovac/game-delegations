@@ -33,9 +33,9 @@ public class SportClubApiImpl implements SportClubApi {
     }
 
     @Override
-    public PagedResponse<SportClubDTO> getAllSportsClubs(BasicPageQueryParams params) {
-        log.info("SportsClubApi.getAllSportClubs [{}]", params);
-        return sportClubService.getAllSportClubs(params);
+    public PagedResponse<SportClubDTO> getSportsClubs(BasicPageQueryParams params) {
+        log.info("SportsClubApi.getSportClubs [{}]", params);
+        return sportClubService.getSportClubs(params);
     }
 
     @Override

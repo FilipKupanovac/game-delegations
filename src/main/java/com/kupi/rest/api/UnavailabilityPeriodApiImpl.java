@@ -33,14 +33,14 @@ public class UnavailabilityPeriodApiImpl implements UnavailabilityPeriodApi {
     }
 
     @Override
-    public PagedResponse<UnavailabilityPeriodDTO> getAllUnavailabilityPeriods(BasicPageQueryParams params) {
-        log.info("UnavailabilityPeriodApi.getAllUnavailabilityPeriods [{}]", params);
-        return unavailabilityPeriodService.getAllUnavailabilityPeriods(params);
+    public PagedResponse<UnavailabilityPeriodDTO> getUnavailabilityPeriods(BasicPageQueryParams params) {
+        log.info("UnavailabilityPeriodApi.getUnavailabilityPeriods [{}]", params);
+        return unavailabilityPeriodService.getUnavailabilityPeriods(params);
     }
 
     @Override
     public UnavailabilityPeriodDTO updateUnavailabilityPeriod(String uuid, UnavailabilityPeriodRequest unavailabilityPeriodRequest) {
-        log.info("UnavailabilityPeriodApi.updateUnavailabilityPeriod [uuid: {}, unavailabilityPeriodDTO: {}]", uuid, unavailabilityPeriodRequest);
+        log.info("UnavailabilityPeriodApi.updateUnavailabilityPeriod [{}, {}]", uuid, unavailabilityPeriodRequest);
         return unavailabilityPeriodService.updateUnavailabilityPeriod(uuid, unavailabilityPeriodRequest);
     }
 

@@ -41,7 +41,7 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params) {
+    public PagedResponse<TableOfficialDTO> getTableOfficials(BasicPageQueryParams params) {
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),

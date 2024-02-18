@@ -33,14 +33,14 @@ public class TableOfficialApiImpl implements TableOfficialApi {
     }
 
     @Override
-    public PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params) {
-        log.info("TableOfficialApi.getAllTableOfficials [{}]", params);
-        return tableOfficialService.getAllTableOfficials(params);
+    public PagedResponse<TableOfficialDTO> getTableOfficials(BasicPageQueryParams params) {
+        log.info("TableOfficialApi.getTableOfficials [{}]", params);
+        return tableOfficialService.getTableOfficials(params);
     }
 
     @Override
     public TableOfficialDTO updateTableOfficial(String uuid, TableOfficialRequest tableOfficialRequest) {
-        log.info("TableOfficialApi.updateTableOfficial [uuid: {}, tableOfficialDTO: {}]", uuid, tableOfficialRequest);
+        log.info("TableOfficialApi.updateTableOfficial [{}, {}]", uuid, tableOfficialRequest);
         return tableOfficialService.updateTableOfficial(uuid, tableOfficialRequest);
     }
 

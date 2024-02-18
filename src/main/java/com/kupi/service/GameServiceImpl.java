@@ -41,7 +41,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params) {
+    public PagedResponse<GameDTO> getGames(BasicPageQueryParams params) {
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),

@@ -21,32 +21,32 @@ public class VenueApiImpl implements VenueApi {
     }
 
     @Override
-    public VenueDTO createVenueDTO(VenueRequest venueRequest) {
-        log.info("VenueApi.createVenueDTO [{}]", venueRequest);
+    public VenueDTO createVenue(VenueRequest venueRequest) {
+        log.info("VenueApi.createVenue [{}]", venueRequest);
         return venueService.saveVenue(venueRequest);
     }
 
     @Override
-    public VenueDTO getVenueDTO(String uuid) {
-        log.info("VenueApi.getVenueDTO [{}]", uuid);
-        return venueService.getVenueById(uuid);
+    public VenueDTO getVenue(String uuid) {
+        log.info("VenueApi.getVenue [{}]", uuid);
+        return venueService.getVenue(uuid);
     }
 
     @Override
-    public PagedResponse<VenueDTO> getAllVenuesDTO(BasicPageQueryParams params) {
-        log.info("VenueApi.getAllVenuesDTO [{}]", params);
+    public PagedResponse<VenueDTO> getAllVenues(BasicPageQueryParams params) {
+        log.info("VenueApi.getAllVenues [{}]", params);
         return venueService.getAllVenues(params);
     }
 
     @Override
-    public VenueDTO updateVenueDTO(String uuid, VenueRequest venueRequest) {
-        log.info("VenueApi.updateVenueDTO [uuid: {}, venueDTO: {}]", uuid, venueRequest);
+    public VenueDTO updateVenue(String uuid, VenueRequest venueRequest) {
+        log.info("VenueApi.updateVenue [{}, {}]", uuid, venueRequest);
         return venueService.updateVenue(uuid, venueRequest);
     }
 
     @Override
-    public void deleteVenueDTO(String uuid) {
-        log.info("VenueApi.deleteVenueDTO [{}]", uuid);
+    public void deleteVenue(String uuid) {
+        log.info("VenueApi.deleteVenue [{}]", uuid);
         venueService.deleteVenue(uuid);
     }
 }

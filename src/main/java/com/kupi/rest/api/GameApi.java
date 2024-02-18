@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/game")
+@Path("/v1/games")
 public interface GameApi {
 
     @POST
@@ -29,7 +29,7 @@ public interface GameApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params);
+    PagedResponse<GameDTO> getGames(BasicPageQueryParams params);
 
     @PUT
     @Path("/{uuid}")

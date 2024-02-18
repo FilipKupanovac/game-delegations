@@ -24,7 +24,7 @@ public interface VenueService {
      * @param uuid identifier of the venue
      * @return venue representation
      */
-    VenueDTO getVenueById(String uuid);
+    VenueDTO getVenue(String uuid);
 
     /**
      * Retrieves a list of all venues in the system.

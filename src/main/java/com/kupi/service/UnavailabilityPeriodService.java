@@ -32,7 +32,7 @@ public interface UnavailabilityPeriodService {
      * @param params query params
      * @return page response
      */
-    PagedResponse<UnavailabilityPeriodDTO> getAllUnavailabilityPeriods(BasicPageQueryParams params);
+    PagedResponse<UnavailabilityPeriodDTO> getUnavailabilityPeriods(BasicPageQueryParams params);
 
     /**
      * Update unavailability period with provided UUID.

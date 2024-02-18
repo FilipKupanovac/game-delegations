@@ -40,7 +40,7 @@ public class CompetitionApiImpl implements CompetitionApi {
 
     @Override
     public CompetitionDTO updateCompetition(String uuid, CompetitionRequest competitionRequest) {
-        log.info("CompetitionApi.updateCompetition [uuid: {}, competitionDTO: {}]", uuid, competitionRequest);
+        log.info("CompetitionApi.updateCompetition [{}, {}]", uuid, competitionRequest);
         return competitionService.updateCompetition(uuid, competitionRequest);
     }
 

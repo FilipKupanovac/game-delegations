@@ -41,7 +41,7 @@ public class SportClubServiceImpl implements SportClubService {
     }
 
     @Override
-    public PagedResponse<SportClubDTO> getAllSportClubs(BasicPageQueryParams params) {
+    public PagedResponse<SportClubDTO> getSportClubs(BasicPageQueryParams params) {
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),

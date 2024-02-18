@@ -32,7 +32,7 @@ public interface SportClubService {
      * @param params query params
      * @return page response
      */
-    PagedResponse<SportClubDTO> getAllSportClubs(BasicPageQueryParams params);
+    PagedResponse<SportClubDTO> getSportClubs(BasicPageQueryParams params);
 
     /**
      * Update sport club with provided identifier.

@@ -33,9 +33,9 @@ public class GameApiImpl implements GameApi {
     }
 
     @Override
-    public PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params) {
-        log.info("GameApi.getAllGames [{}]", params);
-        return gameService.getAllGames(params);
+    public PagedResponse<GameDTO> getGames(BasicPageQueryParams params) {
+        log.info("GameApi.getGames [{}]", params);
+        return gameService.getGames(params);
     }
 
     @Override

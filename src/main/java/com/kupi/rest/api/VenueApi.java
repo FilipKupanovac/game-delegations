@@ -14,30 +14,30 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/venue")
+@Path("/v1/venues")
 public interface VenueApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    VenueDTO createVenueDTO(VenueRequest venueRequest);
+    VenueDTO createVenue(VenueRequest venueRequest);
 
     @GET
     @Path("/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueDTO getVenueDTO(@PathParam("uuid") String uuid);
+    VenueDTO getVenue(@PathParam("uuid") String uuid);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<VenueDTO> getAllVenuesDTO(BasicPageQueryParams params);
+    PagedResponse<VenueDTO> getAllVenues(BasicPageQueryParams params);
 
     @PUT
     @Path("/{uuid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    VenueDTO updateVenueDTO(@PathParam("uuid") String uuid, VenueRequest venueRequest);
+    VenueDTO updateVenue(@PathParam("uuid") String uuid, VenueRequest venueRequest);
 
     @DELETE
     @Path("/{uuid}")
-    void deleteVenueDTO(@PathParam("uuid") String uuid);
+    void deleteVenue(@PathParam("uuid") String uuid);
 }

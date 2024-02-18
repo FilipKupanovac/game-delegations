@@ -36,7 +36,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public VenueDTO getVenueById(String uuid) {
+    public VenueDTO getVenue(String uuid) {
         return venueMapper.toDTO(getByUuid(uuid));
     }
 

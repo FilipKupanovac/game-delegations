@@ -32,7 +32,7 @@ public interface GameService {
      * @param params query params
      * @return page response
      */
-    PagedResponse<GameDTO> getAllGames(BasicPageQueryParams params);
+    PagedResponse<GameDTO> getGames(BasicPageQueryParams params);
 
     /**
      * Update game with provided identifier.

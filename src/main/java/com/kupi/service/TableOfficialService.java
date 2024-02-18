@@ -31,7 +31,7 @@ public interface TableOfficialService {
      * @param params query params
      * @return page
      */
-    PagedResponse<TableOfficialDTO> getAllTableOfficials(BasicPageQueryParams params);
+    PagedResponse<TableOfficialDTO> getTableOfficials(BasicPageQueryParams params);
 
     /**
      * Update table official with provided UUID.
