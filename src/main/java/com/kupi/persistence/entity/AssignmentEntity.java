@@ -1,5 +1,6 @@
 package com.kupi.persistence.entity;
 
+import com.kupi.persistence.type.AcceptanceStatus;
 import com.kupi.persistence.type.TableOfficialPosition;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,8 +33,8 @@ public class AssignmentEntity {
     @Column(name = "uuid")
     private String uuid;
 
-    @Column(name = "accepted")
-    private Boolean accepted;
+    @Column(name = "acceptance_status")
+    private AcceptanceStatus acceptanceStatus;
 
     @Column(name = "position")
     @Enumerated(value = EnumType.STRING)

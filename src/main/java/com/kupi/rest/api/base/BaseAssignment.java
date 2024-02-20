@@ -1,5 +1,6 @@
 package com.kupi.rest.api.base;
 
+import com.kupi.persistence.type.AcceptanceStatus;
 import com.kupi.persistence.type.TableOfficialPosition;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BaseAssignment {
-    private Boolean accepted;
+    private AcceptanceStatus acceptanceStatus;
 
     private TableOfficialPosition position;
 }

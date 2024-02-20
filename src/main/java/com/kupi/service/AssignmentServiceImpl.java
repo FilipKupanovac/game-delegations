@@ -32,7 +32,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     public AssignmentDTO saveAssignment(AssignmentRequest assignmentRequest) {
         AssignmentEntity assignmentEntity = assignmentMapper.toEntity(assignmentRequest);
         assignmentEntity.setUuid(idGenerator.generateId().toString());
-        assignmentEntity.setAccepted(false);
+        // todo - set acceptance status default value if database not do it
         return assignmentMapper.toDTO(assignmentRepository.save(assignmentEntity));
     }
 

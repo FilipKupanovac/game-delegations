@@ -62,7 +62,7 @@ CREATE TABLE assignment
 (
     id                BIGINT PRIMARY KEY,
     uuid              VARCHAR(36) NOT NULL,
-    accepted          BOOLEAN     NOT NULL DEFAULT false,
+    acceptance_status VARCHAR(8)  NOT NULL CHECK ( acceptance_status IN ('PENDING', 'ACCEPTED', 'REJECTED') ) DEFAULT 'PENDING',
     position          VARCHAR(25) CHECK ( position IN
                                           ('SCORER', 'TIMER', 'SHOT_CLOCK_OPERATOR', 'STATISTICIAN', 'SCORER_ASSISTANT', 'STATISTICIAN_ASSISTANT_1', 'STATISTICIAN_ASSISTANT_2') ),
     table_official_id BIGINT
