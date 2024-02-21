@@ -34,6 +34,7 @@ public class AssignmentEntity {
     private String uuid;
 
     @Column(name = "acceptance_status")
+    @Enumerated(value = EnumType.STRING)
     private AcceptanceStatus acceptanceStatus;
 
     @Column(name = "position")

@@ -1,7 +1,11 @@
 package com.kupi.service;
 
 import com.kupi.persistence.entity.AssignmentEntity;
+import com.kupi.persistence.entity.GameEntity;
+import com.kupi.persistence.entity.TableOfficialEntity;
 import com.kupi.persistence.repository.AssignmentRepository;
+import com.kupi.persistence.repository.GameRepository;
+import com.kupi.persistence.repository.TableOfficialRepository;
 import com.kupi.rest.api.request.AssignmentRequest;
 import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.AssignmentDTO;
@@ -20,11 +24,16 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     private final AssignmentRepository assignmentRepository;
     private final AssignmentMapper assignmentMapper;
+    private final GameRepository gameRepository;
+    private final TableOfficialRepository tableOfficialRepository;
     private final IdGenerator idGenerator;
 
-    public AssignmentServiceImpl(AssignmentRepository assignmentRepository, AssignmentMapper assignmentMapper, IdGenerator idGenerator) {
+    public AssignmentServiceImpl(AssignmentRepository assignmentRepository, AssignmentMapper assignmentMapper, GameRepository gameRepository,
+                                 TableOfficialRepository tableOfficialRepository, IdGenerator idGenerator) {
         this.assignmentRepository = assignmentRepository;
         this.assignmentMapper = assignmentMapper;
+        this.gameRepository = gameRepository;
+        this.tableOfficialRepository = tableOfficialRepository;
         this.idGenerator = idGenerator;
     }
 
@@ -32,6 +41,8 @@ public class AssignmentServiceImpl implements AssignmentService {
     public AssignmentDTO createAssignment(AssignmentRequest assignmentRequest) {
         AssignmentEntity assignmentEntity = assignmentMapper.toEntity(assignmentRequest);
         assignmentEntity.setUuid(idGenerator.generateId().toString());
+        assignmentEntity.setGame(getGameByUuid(assignmentRequest.getGameUuid()));
+        assignmentEntity.setTableOfficial(getTableOfficialByUuid(assignmentRequest.getTableOfficialUuid()));
         // todo - set acceptance status default value if database not do it
         return assignmentMapper.toDTO(assignmentRepository.save(assignmentEntity));
     }
@@ -77,5 +88,15 @@ public class AssignmentServiceImpl implements AssignmentService {
     private AssignmentEntity getByUuid(String uuid) {
         return assignmentRepository.findByUuid(uuid)
                 .orElseThrow(() -> new EntityNotFoundException("Assignment with UUID " + uuid + " not found"));
+    }
+
+    private GameEntity getGameByUuid(String gameUuid) {
+        return gameRepository.findByUuid(gameUuid)
+                .orElseThrow(() -> new EntityNotFoundException("Game with uuid " + gameUuid + " not found"));
+    }
+
+    private TableOfficialEntity getTableOfficialByUuid(String tableOfficialUuid) {
+        return tableOfficialRepository.findByUuid(tableOfficialUuid)
+                .orElseThrow(() -> new EntityNotFoundException("Table official with uuid " + tableOfficialUuid + " not found"));
     }
 }

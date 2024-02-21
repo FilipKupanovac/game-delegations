@@ -1,6 +1,6 @@
 CREATE TABLE competition
 (
-    id     BIGINT PRIMARY KEY,
+    id     BIGSERIAL PRIMARY KEY,
     uuid   VARCHAR(36) NOT NULL,
     name   VARCHAR(255),
     season VARCHAR(255)
@@ -8,7 +8,7 @@ CREATE TABLE competition
 
 CREATE TABLE table_official
 (
-    id         BIGINT PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     uuid       VARCHAR(36) NOT NULL,
     first_name VARCHAR(255),
     last_name  VARCHAR(255)
@@ -16,7 +16,7 @@ CREATE TABLE table_official
 
 CREATE TABLE sport_club
 (
-    id   BIGINT PRIMARY KEY,
+    id   BIGSERIAL PRIMARY KEY,
     uuid VARCHAR(36) NOT NULL,
     name VARCHAR(255),
     city VARCHAR(255)
@@ -24,7 +24,7 @@ CREATE TABLE sport_club
 
 CREATE TABLE venue
 (
-    id        BIGINT PRIMARY KEY,
+    id        BIGSERIAL PRIMARY KEY,
     uuid      VARCHAR(36) NOT NULL,
     name      VARCHAR(255),
     address   VARCHAR(255),
@@ -34,7 +34,7 @@ CREATE TABLE venue
 
 CREATE TABLE game
 (
-    id             BIGINT PRIMARY KEY,
+    id             BIGSERIAL PRIMARY KEY,
     uuid           VARCHAR(36) NOT NULL,
     competition_id BIGINT,
     start_time     TIMESTAMP,
@@ -50,7 +50,7 @@ CREATE TABLE game
 
 CREATE TABLE unavailability_period
 (
-    id                BIGINT PRIMARY KEY,
+    id                BIGSERIAL PRIMARY KEY,
     uuid              VARCHAR(36) NOT NULL,
     table_official_id BIGINT
         CONSTRAINT fk__unavailability_date__t_official REFERENCES table_official (id),
@@ -60,7 +60,7 @@ CREATE TABLE unavailability_period
 
 CREATE TABLE assignment
 (
-    id                BIGINT PRIMARY KEY,
+    id                BIGSERIAL PRIMARY KEY,
     uuid              VARCHAR(36) NOT NULL,
     acceptance_status VARCHAR(8)  NOT NULL CHECK ( acceptance_status IN ('PENDING', 'ACCEPTED', 'REJECTED') ) DEFAULT 'PENDING',
     position          VARCHAR(25) CHECK ( position IN
@@ -68,5 +68,8 @@ CREATE TABLE assignment
     table_official_id BIGINT
         CONSTRAINT fk__assignment__t_official REFERENCES table_official (id),
     game_id           BIGINT
-        CONSTRAINT fk__assignment__game REFERENCES game (id)
+        CONSTRAINT fk__assignment__game REFERENCES game (id),
+
+    constraint uq__game__position unique (position, game_id),
+    constraint uq__game__official unique (table_official_id, game_id)
 );

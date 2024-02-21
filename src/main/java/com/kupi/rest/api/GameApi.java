@@ -4,40 +4,30 @@ import com.kupi.rest.api.request.GameRequest;
 import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.rest.dto.GameDTO;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@Path("/v1/games")
+@RequestMapping("/v1/games")
 public interface GameApi {
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    GameDTO createGame(GameRequest gameRequest);
+    @PostMapping
+    GameDTO createGame(@RequestParam("params") GameRequest gameRequest);
 
-    @GET
-    @Path("/{uuid}")
-    @Produces(MediaType.APPLICATION_JSON)
-    GameDTO getGame(@PathParam("uuid") String uuid);
+    @GetMapping("/{uuid}")
+    GameDTO getGame(@PathVariable String uuid);
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    PagedResponse<GameDTO> getGames(BasicPageQueryParams params);
+    @GetMapping
+    PagedResponse<GameDTO> getGames(@RequestParam("params") BasicPageQueryParams params);
 
-    @PUT
-    @Path("/{uuid}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    GameDTO updateGame(@PathParam("uuid") String uuid, GameRequest gameRequest);
+    @PutMapping("/{uuid}")
+    GameDTO updateGame(@PathVariable String uuid, @RequestBody GameRequest gameRequest);
 
-    @DELETE
-    @Path("/{uuid}")
-    void deleteGame(@PathParam("uuid") String uuid);
+    @DeleteMapping("/{uuid}")
+    void deleteGame(@PathVariable String uuid);
 }

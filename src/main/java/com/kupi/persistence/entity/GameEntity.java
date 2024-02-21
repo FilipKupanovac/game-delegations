@@ -32,7 +32,7 @@ public class GameEntity {
     private String uuid;
 
     @ManyToOne
-    @JoinColumn(name = "competition")
+    @JoinColumn(name = "competition_id")
     private CompetitionEntity competition;
 
     @Column(name = "game_number")
@@ -42,14 +42,14 @@ public class GameEntity {
     private Instant startTime;
 
     @ManyToOne
-    @JoinColumn(name = "venue")
+    @JoinColumn(name = "venue_id")
     private VenueEntity venue;
 
     @ManyToOne
-    @JoinColumn(name = "host")
+    @JoinColumn(name = "host_id")
     private SportClubEntity host;
 
     @ManyToOne
-    @JoinColumn(name = "guest")
+    @JoinColumn(name = "guest_id")
     private SportClubEntity guest;
 }
