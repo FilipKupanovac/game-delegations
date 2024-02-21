@@ -29,7 +29,7 @@ public class SportClubServiceImpl implements SportClubService {
     }
 
     @Override
-    public SportClubDTO saveSportClub(SportClubRequest sportClubRequest) {
+    public SportClubDTO createSportClub(SportClubRequest sportClubRequest) {
         SportClubEntity sportClubEntity = sportClubMapper.toEntity(sportClubRequest);
         sportClubEntity.setUuid(idGenerator.generateId().toString());
         return sportClubMapper.toDTO(sportClubRepository.save(sportClubEntity));

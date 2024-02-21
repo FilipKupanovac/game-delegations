@@ -16,7 +16,7 @@ public interface GameService {
      * @param gameRequest request to create game
      * @return created game representation
      */
-    GameDTO saveGame(GameRequest gameRequest);
+    GameDTO createGame(GameRequest gameRequest);
 
     /**
      * Return game with provided identifier.

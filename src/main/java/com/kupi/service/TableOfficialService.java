@@ -15,7 +15,7 @@ public interface TableOfficialService {
      * @param tableOfficialRequest request to create table official
      * @return created table official representation
      */
-    TableOfficialDTO saveTableOfficial(TableOfficialRequest tableOfficialRequest);
+    TableOfficialDTO createTableOfficial(TableOfficialRequest tableOfficialRequest);
 
     /**
      * Return table official with provided UUID.

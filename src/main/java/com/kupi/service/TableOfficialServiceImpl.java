@@ -29,7 +29,7 @@ public class TableOfficialServiceImpl implements TableOfficialService {
     }
 
     @Override
-    public TableOfficialDTO saveTableOfficial(TableOfficialRequest tableOfficialRequest) {
+    public TableOfficialDTO createTableOfficial(TableOfficialRequest tableOfficialRequest) {
         TableOfficialEntity tableOfficialEntity = tableOfficialMapper.toEntity(tableOfficialRequest);
         tableOfficialEntity.setUuid(idGenerator.generateId().toString());
         return tableOfficialMapper.toDTO(tableOfficialRepository.save(tableOfficialEntity));

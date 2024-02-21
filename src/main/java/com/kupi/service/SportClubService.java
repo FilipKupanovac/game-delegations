@@ -16,7 +16,7 @@ public interface SportClubService {
      * @param sportClubRequest request to create sports club
      * @return created sport club representation
      */
-    SportClubDTO saveSportClub(SportClubRequest sportClubRequest);
+    SportClubDTO createSportClub(SportClubRequest sportClubRequest);
 
     /**
      * Return sport club with provided identifier.

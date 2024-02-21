@@ -23,7 +23,7 @@ public class SportClubApiImpl implements SportClubApi {
     @Override
     public SportClubDTO createSportsClub(SportClubRequest sportClubRequest) {
         log.info("SportsClubApi.createSportClub [{}]", sportClubRequest);
-        return sportClubService.saveSportClub(sportClubRequest);
+        return sportClubService.createSportClub(sportClubRequest);
     }
 
     @Override

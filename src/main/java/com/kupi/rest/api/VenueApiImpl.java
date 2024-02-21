@@ -23,7 +23,7 @@ public class VenueApiImpl implements VenueApi {
     @Override
     public VenueDTO createVenue(VenueRequest venueRequest) {
         log.info("VenueApi.createVenue [{}]", venueRequest);
-        return venueService.saveVenue(venueRequest);
+        return venueService.createVenue(venueRequest);
     }
 
     @Override

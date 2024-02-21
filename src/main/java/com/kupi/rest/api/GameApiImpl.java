@@ -23,7 +23,7 @@ public class GameApiImpl implements GameApi {
     @Override
     public GameDTO createGame(GameRequest gameRequest) {
         log.info("GameApi.createGame [{}]", gameRequest);
-        return gameService.saveGame(gameRequest);
+        return gameService.createGame(gameRequest);
     }
 
     @Override

@@ -16,7 +16,7 @@ public interface UnavailabilityPeriodService {
      * @param unavailabilityPeriodRequest request to create unavailability period
      * @return created unavailability period representation
      */
-    UnavailabilityPeriodDTO saveUnavailabilityPeriod(UnavailabilityPeriodRequest unavailabilityPeriodRequest);
+    UnavailabilityPeriodDTO createUnavailabilityPeriod(UnavailabilityPeriodRequest unavailabilityPeriodRequest);
 
     /**
      * Return unavailability period with provided UUID.

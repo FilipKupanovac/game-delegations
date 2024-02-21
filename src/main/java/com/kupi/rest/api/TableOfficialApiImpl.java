@@ -23,7 +23,7 @@ public class TableOfficialApiImpl implements TableOfficialApi {
     @Override
     public TableOfficialDTO createTableOfficial(TableOfficialRequest tableOfficialRequest) {
         log.info("TableOfficialApi.createTableOfficial [{}]", tableOfficialRequest);
-        return tableOfficialService.saveTableOfficial(tableOfficialRequest);
+        return tableOfficialService.createTableOfficial(tableOfficialRequest);
     }
 
     @Override

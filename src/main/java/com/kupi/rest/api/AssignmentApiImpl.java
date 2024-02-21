@@ -23,7 +23,7 @@ public class AssignmentApiImpl implements AssignmentApi {
     @Override
     public AssignmentDTO createAssignment(AssignmentRequest assignmentRequest) {
         log.info("AssignmentApi.createAssignment [{}]", assignmentRequest);
-        return assignmentService.saveAssignment(assignmentRequest);
+        return assignmentService.createAssignment(assignmentRequest);
     }
 
     @Override

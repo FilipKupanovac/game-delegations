@@ -16,7 +16,7 @@ public interface CompetitionService {
      * @param competitionRequest request to create competition
      * @return created competition representation
      */
-    CompetitionDTO saveCompetition(CompetitionRequest competitionRequest);
+    CompetitionDTO createCompetition(CompetitionRequest competitionRequest);
 
     /**
      * Return competition with provided identifier.

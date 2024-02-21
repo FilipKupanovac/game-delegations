@@ -29,7 +29,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public GameDTO saveGame(GameRequest gameRequest) {
+    public GameDTO createGame(GameRequest gameRequest) {
         GameEntity gameEntity = gameMapper.toEntity(gameRequest);
         gameEntity.setUuid(idGenerator.generateId().toString());
         return gameMapper.toDTO(gameRepository.save(gameEntity));

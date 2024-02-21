@@ -16,7 +16,7 @@ public interface VenueService {
      * @param venueRequest request to create venue
      * @return created venue representation
      */
-    VenueDTO saveVenue(VenueRequest venueRequest);
+    VenueDTO createVenue(VenueRequest venueRequest);
 
     /**
      * Retrieves a venue with the provided identifier.

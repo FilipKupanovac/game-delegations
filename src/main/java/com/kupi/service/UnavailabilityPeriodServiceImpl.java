@@ -33,7 +33,7 @@ public class UnavailabilityPeriodServiceImpl implements UnavailabilityPeriodServ
 
     // todo - through security enable only authors and admin to tamper data, e.g. on create do not ask for official data, but rather pick it from security
     @Override
-    public UnavailabilityPeriodDTO saveUnavailabilityPeriod(UnavailabilityPeriodRequest unavailabilityPeriodRequest) {
+    public UnavailabilityPeriodDTO createUnavailabilityPeriod(UnavailabilityPeriodRequest unavailabilityPeriodRequest) {
         UnavailabilityPeriodEntity unavailabilityPeriodEntity = unavailabilityPeriodMapper.toEntity(unavailabilityPeriodRequest);
         unavailabilityPeriodEntity.setUuid(idGenerator.generateId().toString());
         return unavailabilityPeriodMapper.toDTO(unavailabilityPeriodRepository.save(unavailabilityPeriodEntity));

@@ -29,7 +29,7 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionDTO saveCompetition(CompetitionRequest competitionRequest) {
+    public CompetitionDTO createCompetition(CompetitionRequest competitionRequest) {
         CompetitionEntity competitionEntity = competitionMapper.toEntity(competitionRequest);
         competitionEntity.setUuid(idGenerator.generateId().toString());
         return competitionMapper.toDTO(competitionRepository.save(competitionEntity));

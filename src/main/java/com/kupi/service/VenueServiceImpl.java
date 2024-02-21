@@ -29,7 +29,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public VenueDTO saveVenue(VenueRequest venueRequest) {
+    public VenueDTO createVenue(VenueRequest venueRequest) {
         VenueEntity venueEntity = venueMapper.toEntity(venueRequest);
         venueEntity.setUuid(idGenerator.generateId().toString());
         return venueMapper.toDTO(venueRepository.save(venueEntity));

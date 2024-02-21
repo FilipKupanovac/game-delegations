@@ -23,7 +23,7 @@ public class CompetitionApiImpl implements CompetitionApi {
     @Override
     public CompetitionDTO createCompetition(CompetitionRequest competitionRequest) {
         log.info("CompetitionApi.createCompetition [{}]", competitionRequest);
-        return competitionService.saveCompetition(competitionRequest);
+        return competitionService.createCompetition(competitionRequest);
     }
 
     @Override

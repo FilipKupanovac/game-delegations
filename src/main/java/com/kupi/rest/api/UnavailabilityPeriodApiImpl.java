@@ -23,7 +23,7 @@ public class UnavailabilityPeriodApiImpl implements UnavailabilityPeriodApi {
     @Override
     public UnavailabilityPeriodDTO createUnavailabilityPeriod(UnavailabilityPeriodRequest unavailabilityPeriodRequest) {
         log.info("UnavailabilityPeriodApi.createUnavailabilityPeriod [{}]", unavailabilityPeriodRequest);
-        return unavailabilityPeriodService.saveUnavailabilityPeriod(unavailabilityPeriodRequest);
+        return unavailabilityPeriodService.createUnavailabilityPeriod(unavailabilityPeriodRequest);
     }
 
     @Override

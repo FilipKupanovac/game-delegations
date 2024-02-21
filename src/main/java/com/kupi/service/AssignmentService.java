@@ -16,7 +16,7 @@ public interface AssignmentService {
      * @param assignmentRequest request to create an assignment
      * @return created assignment representation
      */
-    AssignmentDTO saveAssignment(AssignmentRequest assignmentRequest);
+    AssignmentDTO createAssignment(AssignmentRequest assignmentRequest);
 
     /**
      * Returns an assignment with the provided UUID.

@@ -29,7 +29,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     }
 
     @Override
-    public AssignmentDTO saveAssignment(AssignmentRequest assignmentRequest) {
+    public AssignmentDTO createAssignment(AssignmentRequest assignmentRequest) {
         AssignmentEntity assignmentEntity = assignmentMapper.toEntity(assignmentRequest);
         assignmentEntity.setUuid(idGenerator.generateId().toString());
         // todo - set acceptance status default value if database not do it
