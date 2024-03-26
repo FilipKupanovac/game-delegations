@@ -26,3 +26,7 @@ replay_pid*
 .idea/
 
 /target
+
+# testing data and docker file creation
+src/main/docker
+src/main/resources/db/migration/V99_0_0__test_data.sql
