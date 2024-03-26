@@ -1,11 +1,5 @@
-cxf:
-  servlet:
-    init:
-      hide-service-list-page: true
-  jaxrs:
-    component-scan-packages: "com.kupi.rest.api"
-
-
+server:
+  port: 8099
 spring:
   application:
     name: Game Delegations Application
