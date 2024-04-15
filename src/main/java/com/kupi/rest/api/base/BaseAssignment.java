@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseAssignment {
+public abstract class BaseAssignment {
     private AcceptanceStatus acceptanceStatus;
 
     private TableOfficialPosition position;

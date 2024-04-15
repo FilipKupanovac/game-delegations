@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/table-officials")
+@Path("/v1/frontend/table-officials")
 public interface TableOfficialApi {
 
     @POST

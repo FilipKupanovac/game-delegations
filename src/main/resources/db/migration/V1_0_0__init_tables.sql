@@ -73,3 +73,15 @@ CREATE TABLE assignment
     constraint uq__game__position unique (position, game_id),
     constraint uq__game__official unique (table_official_id, game_id)
 );
+
+CREATE TABLE application_user
+(
+    id                 BIGSERIAL PRIMARY KEY,
+    uuid               VARCHAR     NOT NULL,
+    first_name         VARCHAR(30) NOT NULL,
+    last_name          VARCHAR(50),
+    email              VARCHAR(50) NOT NULL,
+    encrypted_password VARCHAR(80) NOT NULL,
+
+    constraint uq_email unique (email)
+);

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RequestMapping("/v1/competitions")
+@RequestMapping("/v1/frontend/competitions")
 public interface CompetitionApi {
 
     @PostMapping

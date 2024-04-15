@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/v1/assignments")
+@RequestMapping("/v1/frontend/assignments")
 public interface AssignmentApi {
 
     @PostMapping

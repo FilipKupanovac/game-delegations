@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/v1/venues")
+@Path("/v1/frontend/venues")
 public interface VenueApi {
 
     @POST
