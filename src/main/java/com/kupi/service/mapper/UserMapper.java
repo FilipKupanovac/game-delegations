@@ -12,6 +12,7 @@ public interface UserMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "uuid", ignore = true)
+    @Mapping(target = "grantedAuthorities", ignore = true)
     UserEntity toEntity(UserRequest userRequest);
 
     UserDTO toDTO(UserEntity userEntity);

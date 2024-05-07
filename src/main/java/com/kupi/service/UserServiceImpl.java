@@ -6,8 +6,11 @@ import com.kupi.rest.api.request.UserRequest;
 import com.kupi.rest.dto.UserDTO;
 import com.kupi.service.mapper.UserMapper;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
+
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,6 +29,12 @@ public class UserServiceImpl implements UserService {
     public UserDTO createUser(UserRequest userRequest) {
         UserEntity user = userMapper.toEntity(userRequest);
         user.setUuid(idGenerator.generateId().toString());
+        user.setGrantedAuthorities(
+                userRequest.getUserRoles()
+                        .stream()
+                        .map(role -> new SimpleGrantedAuthority(String.format("ROLE_%s", role.toUpperCase())))
+                        .collect(Collectors.toList())
+        );
         return userMapper.toDTO(userRepository.save(user));
     }
 
