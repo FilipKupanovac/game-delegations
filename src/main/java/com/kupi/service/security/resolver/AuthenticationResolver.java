@@ -37,7 +37,7 @@ public class AuthenticationResolver {
             // todo - space for implementing another ways of authentication - by username or smth like that
             return null;
         }
-        UserDetailsImpl userDetails = new UserDetailsImpl(user.getEmail(), user.getEncryptedPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
+        UserDetailsImpl userDetails = new UserDetailsImpl(user.getEmail(), user.getEncryptedPassword(), user.getUuid(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
         return new UsernamePasswordAuthenticationToken(userDetails, email, userDetails.getAuthorities());
     }
 

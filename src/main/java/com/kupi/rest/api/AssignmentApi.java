@@ -29,4 +29,7 @@ public interface AssignmentApi {
 
     @DeleteMapping("/{uuid}")
     void deleteAssignment(@PathVariable String uuid);
+
+    @GetMapping("/user")
+    PagedResponse<AssignmentDTO> getUserAssignments(BasicPageQueryParams params);
 }

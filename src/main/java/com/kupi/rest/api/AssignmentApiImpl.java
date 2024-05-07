@@ -49,4 +49,10 @@ public class AssignmentApiImpl implements AssignmentApi {
         log.info("AssignmentApi.deleteAssignment [{}]", uuid);
         assignmentService.deleteAssignment(uuid);
     }
+
+    @Override
+    public PagedResponse<AssignmentDTO> getUserAssignments(BasicPageQueryParams params) {
+        log.info("AssignmentApi.getUserAssignments [{}]", params);
+        return assignmentService.getUserAssignments(params);
+    }
 }

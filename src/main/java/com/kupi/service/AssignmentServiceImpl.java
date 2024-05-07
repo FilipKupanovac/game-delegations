@@ -11,11 +11,14 @@ import com.kupi.rest.api.response.PagedResponse;
 import com.kupi.rest.dto.AssignmentDTO;
 import com.kupi.rest.dto.BasicPageQueryParams;
 import com.kupi.service.mapper.AssignmentMapper;
+import com.kupi.service.security.UserDetailsImpl;
 import jakarta.persistence.EntityNotFoundException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
 
@@ -54,6 +57,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public PagedResponse<AssignmentDTO> getAssignments(BasicPageQueryParams params) {
+        // todo - make admin only
         PageRequest pageRequest = PageRequest.of(
                 params.getPage(),
                 params.getSize(),
@@ -83,6 +87,29 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     public void deleteAssignment(String uuid) {
         assignmentRepository.delete(getByUuid(uuid));
+    }
+
+    @Override
+    public PagedResponse<AssignmentDTO> getUserAssignments(BasicPageQueryParams params) {
+        PageRequest pageRequest = PageRequest.of(
+                params.getPage(),
+                params.getSize(),
+                Sort.Direction.fromOptionalString(params.getDirection()).orElse(Sort.Direction.ASC),
+                StringUtils.isNotBlank(params.getColumn()) ? params.getColumn() : "key"
+        );
+        if (assignmentRepository.count() < 1) {
+            return PagedResponse.fromPage(Page.empty());
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Page<AssignmentEntity> pageSlice = assignmentRepository.findAllByTableOfficialUuid(userDetails.getUserId(), pageRequest);
+        Page<AssignmentDTO> pageSliceDTO = pageSlice.map(assignmentMapper::toDTO);
+        PagedResponse<AssignmentDTO> pagedResponse = PagedResponse.fromPage(pageSliceDTO);
+
+        if (params.getPage() > pagedResponse.getTotalPages()) {
+            throw new RuntimeException("Page out of bounds!");
+        }
+        return pagedResponse;
     }
 
     private AssignmentEntity getByUuid(String uuid) {

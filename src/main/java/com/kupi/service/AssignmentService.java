@@ -49,4 +49,12 @@ public interface AssignmentService {
      * @param uuid assignment UUID
      */
     void deleteAssignment(String uuid);
+
+    /**
+     * Pages through the assignments of current user.
+     *
+     * @param params query parameters for pagination
+     * @return paginated list of assignments for current user
+     */
+    PagedResponse<AssignmentDTO> getUserAssignments(BasicPageQueryParams params);
 }

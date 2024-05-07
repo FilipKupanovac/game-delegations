@@ -82,6 +82,7 @@ CREATE TABLE application_user
     last_name          VARCHAR(50),
     email              VARCHAR(50) NOT NULL,
     encrypted_password VARCHAR(80) NOT NULL,
+    authorities        JSONB       NOT NULL,
 
     constraint uq_email unique (email)
 );

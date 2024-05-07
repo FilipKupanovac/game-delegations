@@ -1,5 +1,6 @@
 package com.kupi.persistence.entity;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,4 +42,7 @@ public class UserEntity {
 
     @Column(name = "encrypted_password")
     private String encryptedPassword;
+
+    @Type(JsonType.class)
+    private List<GrantedAuthority> grantedAuthorities;
 }
