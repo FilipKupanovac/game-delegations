@@ -1,0 +1,52 @@
+package com.kupi.delegations.service;
+
+import com.kupi.delegations.rest.api.request.GameRequest;
+import com.kupi.delegations.rest.api.response.PagedResponse;
+import com.kupi.delegations.rest.dto.BasicPageQueryParams;
+import com.kupi.delegations.rest.dto.GameDTO;
+
+/**
+ * Service interface for managing games in the system.
+ */
+public interface GameService {
+
+    /**
+     * Saves game to the system.
+     *
+     * @param gameRequest request to create game
+     * @return created game representation
+     */
+    GameDTO createGame(GameRequest gameRequest);
+
+    /**
+     * Return game with provided identifier.
+     *
+     * @param uuid identifier of competition
+     * @return game representation
+     */
+    GameDTO getGame(String uuid);
+
+    /**
+     * Page games.
+     *
+     * @param params query params
+     * @return page response
+     */
+    PagedResponse<GameDTO> getGames(BasicPageQueryParams params);
+
+    /**
+     * Update game with provided identifier.
+     *
+     * @param uuid        game identifier
+     * @param gameRequest request to update game
+     * @return updated game representation
+     */
+    GameDTO updateGame(String uuid, GameRequest gameRequest);
+
+    /**
+     * Delete game with provided representation.
+     *
+     * @param uuid game identifier
+     */
+    void deleteGame(String uuid);
+}

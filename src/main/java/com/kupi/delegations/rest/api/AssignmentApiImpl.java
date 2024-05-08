@@ -1,0 +1,59 @@
+package com.kupi.delegations.rest.api;
+
+import com.kupi.delegations.rest.dto.BasicPageQueryParams;
+import com.kupi.delegations.rest.api.request.AssignmentRequest;
+import com.kupi.delegations.rest.api.response.PagedResponse;
+import com.kupi.delegations.rest.dto.AssignmentDTO;
+import com.kupi.delegations.service.AssignmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AssignmentApiImpl implements AssignmentApi {
+
+    private static Logger log = LoggerFactory.getLogger(AssignmentApiImpl.class);
+
+    private final AssignmentService assignmentService;
+
+    public AssignmentApiImpl(AssignmentService assignmentService) {
+        this.assignmentService = assignmentService;
+        log.info(this.getClass().getName() + " successfully initialized");
+    }
+
+    @Override
+    public AssignmentDTO createAssignment(AssignmentRequest assignmentRequest) {
+        log.info("AssignmentApi.createAssignment [{}]", assignmentRequest);
+        return assignmentService.createAssignment(assignmentRequest);
+    }
+
+    @Override
+    public AssignmentDTO getAssignment(String uuid) {
+        log.info("AssignmentApi.getAssignment [{}]", uuid);
+        return assignmentService.getAssignment(uuid);
+    }
+
+    @Override
+    public PagedResponse<AssignmentDTO> getAssignments(BasicPageQueryParams params) {
+        log.info("AssignmentApi.getAssignments [{}]", params);
+        return assignmentService.getAssignments(params);
+    }
+
+    @Override
+    public AssignmentDTO updateAssignment(String uuid, AssignmentRequest assignmentRequest) {
+        log.info("AssignmentApi.updateAssignment [{}, {}]", uuid, assignmentRequest);
+        return assignmentService.updateAssignment(uuid, assignmentRequest);
+    }
+
+    @Override
+    public void deleteAssignment(String uuid) {
+        log.info("AssignmentApi.deleteAssignment [{}]", uuid);
+        assignmentService.deleteAssignment(uuid);
+    }
+
+    @Override
+    public PagedResponse<AssignmentDTO> getUserAssignments(BasicPageQueryParams params) {
+        log.info("AssignmentApi.getUserAssignments [{}]", params);
+        return assignmentService.getUserAssignments(params);
+    }
+}

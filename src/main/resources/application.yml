@@ -1,23 +1,31 @@
 server:
   port: 8099
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: debug
+
 spring:
-  application:
-    name: Game Delegations Application
   datasource:
     url: jdbc:postgresql://localhost:5432/uksgo
     driver-class-name: org.postgresql.Driver
     username: uksgo
     password: uksgopass
   jpa:
+    open-in-view: false
+    database: postgresql
+    hibernate:
+      ddl-auto: none
     properties:
       hibernate:
-        generate_statistics: false
-        jdbc:
-          use_streams_for_binary: true
         default_schema: ${game-delegations.schema}
   flyway:
     enabled: true
     validate-on-migrate: true
+    default-schema: ${game-delegations.schema}
 
 game-delegations:
   schema: public
